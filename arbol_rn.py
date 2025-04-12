@@ -18,31 +18,20 @@ class RBTree:
             self.size += 1
             return
         else:
-            if self.root > value:
-                self._left_insert(value, self.root)
-            elif self.root < value:
-                self._right_insert(value, self.root)
+            self._full_insert(value, self.root)
     
-    def _left_insert(self, value, node):
-        if value < node.value:
-            if node.left is None:
-                node.left = Node(value)
-                node.left.parent = node
-                self.size += 1
+    def _full_insert(self, value, current):
+        while current is not None:
+            if current.value > value:
+                parent = current
+                current = current.left
+                continue
+            elif current.value < value:
+                parent = current
+                current = current.right
+                continue
             else:
-                self._left_insert(value, node.left)
-        else:
-            self._right_insert(value, node)
-    
-    def _right_insert(self, value, node):
-        if value > node.value:
-            if node.right is None:
-                node.right = Node(value)
-                node.right.parent = node
-                self.size += 1
-            else:
-                self._right_insert(value, node.right)
-        else:
-            self._left_insert(value, node)
-                
+                return -1
+        current = Node(value)
+        current.parent = parent
     
