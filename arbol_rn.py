@@ -121,12 +121,12 @@ class RBTree:
     def rotate_left_right(self, current):
         a = current
         b = current.left
-        nuevo = current.left.right
+        nuevo = b.right
         nuevo.parent = a.parent
-        b.left = nuevo.right
-        a.left = nuevo.left
-        nuevo.left = a
-        nuevo.right = b
+        b.right = nuevo.left
+        a.left = nuevo.right
+        nuevo.right = a
+        nuevo.left = b
         b.parent = nuevo
         a.parent = nuevo
         a.chaange_color()
@@ -140,4 +140,22 @@ class RBTree:
         return
     
     def rotate_right_left(self, current):
-        
+        a = current
+        b = current.right
+        nuevo = b.left
+        nuevo.parent = a.parent
+        b.left = nuevo.right
+        a.right = nuevo.left
+        nuevo.left = a
+        nuevo.right = b
+        b.parent = nuevo
+        a.parent = nuevo
+        a.chaange_color()
+        nuevo.change_color()
+        nuevo.update_height()
+        nuevo.update_black_height()
+        b.update_height()
+        b.update_black_height()
+        a.update_height()
+        a.update_black_height()
+        return
