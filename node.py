@@ -15,3 +15,16 @@ class Node:
     
     def change_color(self):
             self.color = (self.color + 1) % 2
+            
+    def update_height(self):
+        if self.parent is None:
+            self.height = 1
+            return
+        self.height = self.parent.height + 1
+        return
+            
+    def update_black_height(self):
+        if self.parent is None:
+            self.black_height = 0
+            return
+        self.black_height = self.parent.black_height + 1 if self.parent.color == 0 else self.parent.black_height
