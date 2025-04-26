@@ -22,7 +22,8 @@ class RBTree:
                 parent = current
                 current = current.right
                 continue
-        return [current, parent]  
+            return [current, parent]
+        return [current, parent]
     
     def insert(self, value):
         current, parent = self.find_node(value)
@@ -46,7 +47,12 @@ class RBTree:
         current, parent = self.find_node(value)
         if (current is None):
             return False
-        self.__size -= 1     
+        if parent == None:
+            self.__root = None
+            self.__size = 0
+            return True
+        self.check_delete(current)
+        self.__size -= 1
 
     
     def _check_insert(current):
@@ -159,3 +165,47 @@ class RBTree:
         a.update_height()
         a.update_black_height()
         return
+    
+    
+    def check_delete(self, current):
+        if current.color == 1:
+            if(current.right):
+                if current.parent.right == current:
+                    current.parent.right = current.right
+                else:
+                    current.parent.left = current.right
+                current.right.parent = current.parent
+                current.parent = None
+                return
+            if(current.left):
+                if current.parent.right == current:
+                    current.parent.right = current.left
+                else:
+                    current.parent.left = current.left
+                current.left.parent = current.parent
+                current.parent = None
+                return
+            
+            current.parent
+            return
+        if current.parent is None:
+            return
+        if current.parent.left == current:
+            brother = current.parent.right
+            if brother.color == 1:
+                brother.color = 0
+                current.parent.color = 1
+                self.rotate_left(current.parent)
+                return self.check_delete(current)
+            if brother.left is None or brother.left.color == 0:
+                if brother.right is None or brother.right.color == 0:
+                    brother.color = 1
+                    return self.check_delete(current.parent)
+                brother.color = 1
+                brother.right.color = 0
+                self.rotate_left(brother)
+                return self.check_delete(current)
+            brother.color = current.parent.color
+            current.parent.color = 0
+            brother.right.color = 0
+            self.rotate_left(current.parent)
