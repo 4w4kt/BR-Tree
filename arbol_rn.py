@@ -2,9 +2,49 @@ from node import Node
 
 
 class RBTree:
+    #Crea un nuevo treeset. Ordenado por orden natural de los elementos
     def __init__(self):
         self.__root = None
         self.__size = 0
+    #Crea un nuevo treeset que contiene elementos con un collectino específico, ordenado por orden natural de los elementos
+    def __init__(self, collection):
+        self.c = Collection(collection)
+        self.__root = None
+        self.__size = 0
+
+    #Funcion que devuelve un booleano. Añade un elemento al arbol si no se encuentra en ella
+    def add(num):
+    
+    #Aade un grupo de elementos al arbol. Devuelve un booleano
+    def addAll(collection):
+
+
+    #Devuelve el elemento más pequeño de este conjunto que sea mayor o igual al elememnto dado, o nulo si no existe dicho elemento.
+    def ceiling(num):
+        if num not in RBTree:
+            return None
+        return num
+    
+    #Elmimina todos los elementos del cojunto
+    def clear():
+
+    #Retorna una shallow copy del TreeSet
+    def clone():
+
+    
+
+    #Retorna true si el conjunto contiene el numero especificado
+    def contains(num):
+        return num in RBTree
+    
+    #Devuelve un iterador sobre los elementos de este conjunto en orden descendente
+    def descendingIterator():
+
+    #Devuelve el primer elemento (más bajo) actualmente en este conjunto.
+    def first():
+
+    #Devuelve el elemento mas grande de este conjunto menor o igual al elemento dado, o nulo si no existe dicho elemento
+    def floor(num):
 
     #insersion
     @property
