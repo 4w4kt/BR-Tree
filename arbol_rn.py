@@ -88,10 +88,7 @@ class RBTree:
         if (current is None):
             return False
         if parent == None:
-            self.__root = None
-            self.__size = 0
-            return True
-        self.check_delete(current)
+            self.caso_uno(current)
         self.__size -= 1
 
     
@@ -206,8 +203,59 @@ class RBTree:
         a.update_black_height()
         return
     
-    
-    def check_delete(self, current):
+        
+        
+        
+        
+    def caso_uno(self, current):
+        if current.parent == None:
+           #caso raiz
+           if current.left == None:
+                if current.right == None:
+                    current.parent.left = None
+                    current.parent = None
+                    return
+                current.parent.left = current.right
+                current.right.parent = current.parent
+                current.parent = None
+                return
+            if current.right == None:
+                current.parent.left = current.left
+                current.left.parent = current.parent
+                current.parent = None
+                return
+            #estan los dos hijos
+
+            current.parent.left = current.right
+            current.right.parent = current.parent
+            current.parent = None
+            return
+        
+        if current.parent.left == current:
+            #hijo izquierdo
+            if current.left == None:
+                if current.right == None:
+                    current.parent.left = None
+                    current.parent = None
+                    return
+                current.parent.left = current.right
+                current.right.parent = current.parent
+                current.parent = None
+                return
+            if current.right == None:
+                current.parent.left = current.left
+                current.left.parent = current.parent
+                current.parent = None
+                return
+            #estan los dos hijos
+
+            current.parent.left = current.right
+            current.right.parent = current.parent
+            current.parent = None
+            return
+        if current.parentt.right == current:
+            #hijo derecho
+        
         if current.color == 1:
             if(current.right):
                 if current.parent.right == current:
@@ -225,7 +273,7 @@ class RBTree:
                 current.left.parent = current.parent
                 current.parent = None
                 return
-            
+        # revisarr    
             current.parent
             return
         if current.parent is None:
