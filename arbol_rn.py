@@ -46,6 +46,34 @@ class RBTree:
     #Devuelve el elemento mas grande de este conjunto menor o igual al elemento dado, o nulo si no existe dicho elemento
     def floor(num):
 
+    #Retorna el menor elemento del arbol mayor o igual al elemento pasado por parámetro o NULL si no se ha encontrado
+    def higher(num):
+
+    #Devuelve true si el arbol no tiene elementos
+    def isEmpty():
+
+    #Devuelve un iterador con los elementos del arbol en orden ascendente
+    def iterator():
+
+    #Retorna el ultimo (mayor) elemento en el arbol, actualmente
+    def last():
+
+    #Devuelve el mayor elemento en el arbol menor al elemento pasado por parametro, o nulo si no existe dicho elemento.
+    def lower():
+
+    #Recupera y elimina el primer elemento (el mas bajo) o devuelve nulo si este conjunto está vacío.
+    def pollFirst():
+
+    
+    #Recupera y elimina el ultimo elemento (el mas grande) o devuelve nulo si el conjuntoestá vacío
+    def pollLast():
+
+    #Elimina el elemento pasado por parámetro
+    def remove(num):
+
+    #Devuelve la cantidad de elementos en el treeset
+    def size():
+
     #insersion
     @property
     def get_root(self):
