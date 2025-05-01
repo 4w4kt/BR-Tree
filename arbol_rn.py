@@ -170,24 +170,31 @@ class RBTree:
     def caso_uno(self, current):
         if current.parent == None:
            #caso raiz
-           if current.left == None:
+            if current.left == None:
                 if current.right == None:
-                    current.parent.left = None
-                    current.parent = None
+                    self.__root = None
+                    self.__size = 0
                     return
-                current.parent.left = current.right
-                current.right.parent = current.parent
-                current.parent = None
+                self.__root = current.right
+                current.right.color = 0
+                current.update_height()
+                current.update_black_height()
+                current.right = None
+                current.right.parent = None
                 return
             if current.right == None:
-                current.parent.left = current.left
-                current.left.parent = current.parent
+                self.__root = current.left
+                current.left.color = 0
+                current.update_height()
+                current.update_black_height()
+                current.left.parent = None
                 current.parent = None
+                current.left = None
                 return
             #estan los dos hijos
-
-            current.parent.left = current.right
-            current.right.parent = current.parent
+            self.__root = current.right
+            current.right.parent = None
+            
             current.parent = None
             return
         
