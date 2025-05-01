@@ -2,9 +2,77 @@ from node import Node
 
 
 class RBTree:
+    #Crea un nuevo treeset. Ordenado por orden natural de los elementos
     def __init__(self):
         self.__root = None
         self.__size = 0
+    #Crea un nuevo treeset que contiene elementos con un collectino específico, ordenado por orden natural de los elementos
+    def __init__(self, collection):
+        self.c = Collection(collection)
+        self.__root = None
+        self.__size = 0
+
+    #Funcion que devuelve un booleano. Añade un elemento al arbol si no se encuentra en ella
+    def add(num):
+    
+    #Aade un grupo de elementos al arbol. Devuelve un booleano
+    def addAll(collection):
+
+
+    #Devuelve el elemento más pequeño de este conjunto que sea mayor o igual al elememnto dado, o nulo si no existe dicho elemento.
+    def ceiling(num):
+        if num not in RBTree:
+            return None
+        return num
+    
+    #Elmimina todos los elementos del cojunto
+    def clear():
+
+    #Retorna una shallow copy del TreeSet
+    def clone():
+
+    
+
+    #Retorna true si el conjunto contiene el numero especificado
+    def contains(num):
+        return num in RBTree
+    
+    #Devuelve un iterador sobre los elementos de este conjunto en orden descendente
+    def descendingIterator():
+
+    #Devuelve el primer elemento (más bajo) actualmente en este conjunto.
+    def first():
+
+    #Devuelve el elemento mas grande de este conjunto menor o igual al elemento dado, o nulo si no existe dicho elemento
+    def floor(num):
+
+    #Retorna el menor elemento del arbol mayor o igual al elemento pasado por parámetro o NULL si no se ha encontrado
+    def higher(num):
+
+    #Devuelve true si el arbol no tiene elementos
+    def isEmpty():
+
+    #Devuelve un iterador con los elementos del arbol en orden ascendente
+    def iterator():
+
+    #Retorna el ultimo (mayor) elemento en el arbol, actualmente
+    def last():
+
+    #Devuelve el mayor elemento en el arbol menor al elemento pasado por parametro, o nulo si no existe dicho elemento.
+    def lower():
+
+    #Recupera y elimina el primer elemento (el mas bajo) o devuelve nulo si este conjunto está vacío.
+    def pollFirst():
+
+    
+    #Recupera y elimina el ultimo elemento (el mas grande) o devuelve nulo si el conjuntoestá vacío
+    def pollLast():
+
+    #Elimina el elemento pasado por parámetro
+    def remove(num):
+
+    #Devuelve la cantidad de elementos en el treeset
+    def size():
 
     #insersion
     @property
