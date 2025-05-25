@@ -16,66 +16,81 @@ class RBTree:
 
 
     #Funcion que devuelve un booleano. Añade un elemento al arbol si no se encuentra en ella
-    def add(num):
+    def add(self, num):
+        return -1
     
     #Aade un grupo de elementos al arbol. Devuelve un booleano
-    def addAll(collection):
+    def addAll(self, collection):
+        return -1
 
 
     #Devuelve el elemento más pequeño de este conjunto que sea mayor o igual al elememnto dado, o nulo si no existe dicho elemento.
-    def ceiling(num):
+    def ceiling(self, num):
         if num not in RBTree:
             return None
         return num
     
     #Elmimina todos los elementos del cojunto
-    def clear():
+    def clear(self):
+        return -1
 
     #Retorna una shallow copy del TreeSet
-    def clone():
+    def clone(self):
+        return -1
 
     
 
     #Retorna true si el conjunto contiene el numero especificado
-    def contains(num):
+    def contains(self, num):
         return num in RBTree
     
     #Devuelve un iterador sobre los elementos de este conjunto en orden descendente
-    def descendingIterator():
+    def descendingIterator(self):
+        return -1
 
     #Devuelve el primer elemento (más bajo) actualmente en este conjunto.
-    def first():
-
+    def first(self):
+        return -1
     #Devuelve el elemento mas grande de este conjunto menor o igual al elemento dado, o nulo si no existe dicho elemento
-    def floor(num):
+    def floor(self, num):
+        return -1
 
     #Retorna el menor elemento del arbol mayor o igual al elemento pasado por parámetro o NULL si no se ha encontrado
-    def higher(num):
+    def higher(self, num):
+        return -1
 
     #Devuelve true si el arbol no tiene elementos
-    def isEmpty():
+    def isEmpty(self):
+        return -1
 
     #Devuelve un iterador con los elementos del arbol en orden ascendente
-    def iterator():
+    def iterator(self):
+        return -1
 
     #Retorna el ultimo (mayor) elemento en el arbol, actualmente
-    def last():
+    def last(self):
+        return -1
 
     #Devuelve el mayor elemento en el arbol menor al elemento pasado por parametro, o nulo si no existe dicho elemento.
-    def lower():
+    def lower(self):
+        return -1
 
     #Recupera y elimina el primer elemento (el mas bajo) o devuelve nulo si este conjunto está vacío.
-    def pollFirst():
+    def pollFirst(self):
+        return -1
 
     
     #Recupera y elimina el ultimo elemento (el mas grande) o devuelve nulo si el conjuntoestá vacío
-    def pollLast():
+    def pollLast(self):
+        return -1
 
     #Elimina el elemento pasado por parámetro
-    def remove(num):
+    def remove(self, num):
+        return -1
 
     #Devuelve la cantidad de elementos en el treeset
-    def size():
+    def size(self):
+        return -1
 
     #insersion
     @property
@@ -296,9 +311,18 @@ class RBTree:
     def caso_tres_derecho(self, current):
         if current.parent.left == current:
             current.parent.left = current.right
+<<<<<<< HEAD
+            current.right.parent = current.parent
+            current.parent = None
+            return
+        if current.parentt.right == current:
+            #hijo derecho
+            return 
+=======
             
         else:
             current.parent.right = current.right
+>>>>>>> 90f17efeeec3ab6c8dabdf75d6fbda95207c8b16
         
     def caso_tres_izquierdo(self, current):
         pass    
