@@ -8,20 +8,64 @@ class test_node(unittest.TestCase):
     def setUpClass(cls):
         print("Se van a ejecutar las pruebas de la clase nodo")
 
-    @classmethod
-    def tearDownClass(cls):
-        print("Han finalizado las pruebas del nodo")
-
     #Creamos un nodo base para todas las pruebas
     def setUp(self):
-        self.nodo_base = Node(0)
+        self.value = 0
+        self.color = 0
+        self.nodo_base = Node(self.value, self.color)
+
+    #Probar
+    def tearDown(self):
+        self.value = 0
+        self.color = 0
+        self.nodo_base = Node(self.value, self.color)
+    
 
     #Creación de nodo sin parámetros 
     def test_create(self):
         primero = Node(0)
         self.assertEqual(primero.value, 0, "Los valores no son iguales")
-        self.assertEqual(primero.black_height, 0, "Los valores no son iguales")
-        
+        self.assertEqual(primero.color, 0, "Los valores no son iguales")
+        self.assertEqual(primero.parent, None, "No debería tener padre")
+        self.assertEqual(primero.left, None, "Left debería ser None")
+        self.assertEqual(primero.right, None, "Right debería ser None")
+
+    def test_changecolor(self):
+        colorin = Node(0, 0)
+        colorin.change_color(1)
+        self.assertEqual(colorin.color, 1, "El color no se cambió") 
+    
+    #Este lo dejamos así por ahora, puede que no se pueda hacer aqui
+    def test_upheight(self):
+        alturin = Node(0, 0)
+    
+    def test_haschilds(self):
+        soltero = Node(0, 0)
+        padre = Node(0, 0, None, True, None)
+        superpadre = Node(0, 0, None, True, True)
+        self.assertEqual(soltero.has_childs(), 0, "Soltero no tiene hijos") 
+        self.assertEqual(padre.has_childs(), 1, "Padre tiene 1 hijo")
+        self.assertEqual(superpadre.has_childs(), 2, "Superpadre tiene 2")
+    
+    def test_rsucesor(self):
+        soltero = Node(0, 0)
+        padre = Node(0, 0, None, True, None)
+        padre_r = Node(0, 0, None, True, None)
+        self.assertEqual(soltero.has_childs(), None, "Soltero no tiene sucesor derecho") 
+        self.assertEqual(padre.has_childs(), None, "Padre no tiene sucesor derecho")
+        #Padre tiene sucesor derecho, no sé lo que devuelve la función
+        #self.assertEqual(padre_r.has_childs(), 2, "Padre tiene sucesor derecho")
+
+    def test_sucesor(self):
+        soltero = Node(0, 0)
+        padre = Node(0, 0, None, True, None)     
+        self.assertEqual(soltero.has_childs(), None, "Soltero no tiene sucesor derecho") 
+        #No se lo que debería devolver la función
+        self.assertEqual(padre.has_childs(), None, "Padre tiene sucesor derecho")
+
+    @classmethod
+    def tearDownClass(cls):
+        print("Han finalizado las pruebas del nodo")
  
 
 if __name__ == '__main__':

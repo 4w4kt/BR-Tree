@@ -259,8 +259,9 @@ class RBTree:
                 if self.has_childs(child) == 0:
                     return self.caso_tres(current)
             if child.has_childs(child) == 2:
-                if self.childhas_child()
-                return self.caso_cuatro(current)
+                if self.childhas_child():
+                    return self.caso_cuatro(current)
+        return
 
 # El nodo a extraer es la raíz del árbol   
     def caso_uno(self, current):
@@ -311,18 +312,6 @@ class RBTree:
     def caso_tres_derecho(self, current):
         if current.parent.left == current:
             current.parent.left = current.right
-<<<<<<< HEAD
-            current.right.parent = current.parent
-            current.parent = None
-            return
-        if current.parentt.right == current:
-            #hijo derecho
-            return 
-=======
-            
-        else:
-            current.parent.right = current.right
->>>>>>> 90f17efeeec3ab6c8dabdf75d6fbda95207c8b16
         
     def caso_tres_izquierdo(self, current):
         pass    
@@ -335,8 +324,8 @@ class RBTree:
 
     def print_tree(self):
         def _print_subtree(node, prefix="", is_left=True):
-        if node is not None:
-            print(prefix + ("├── " if is_left else "└── ") + f"{node.value}({node.color_str()})")
+            if node is not None:
+                print(prefix + ("├── " if is_left else "└── ") + f"{node.value}({node.color_str()})")
             if node.left or node.right:
                 if node.left:
                     _print_subtree(node.left, prefix + ("│   " if is_left else "    "), True)
