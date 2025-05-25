@@ -12,6 +12,7 @@ class RBTree:
         self.__root = None
         self.__size = 0
 
+
     #Funcion que devuelve un booleano. Añade un elemento al arbol si no se encuentra en ella
     def add(self, num):
         return -1
@@ -96,6 +97,7 @@ class RBTree:
     
     def find_node(self, value):
         current = self.root 
+        parent = None
         while current is not None:
             if current.value > value:
                 parent = current
@@ -113,16 +115,14 @@ class RBTree:
         if (current is not None):
             return False
         if (parent is None):
-            current = Node(value, color=0)
+            current = Node(value, 1)
             self.__size = 1
             return True
-        
         # mejor pasar solo el padre como parametro
-        black_height = parent.black_height * 1 if  parent.color == 0 else parent.black_height
-        current = Node(value, parent.height + 1, black_height, 0)
-        current.parent = parent
+        
+        current = Node(value, parent=parent)
         self.__size += 1
-        self._check_insert(current)  
+        self._check_insert(current)
         return True
 
 
@@ -131,7 +131,7 @@ class RBTree:
         if (current is None):
             return False
         if parent == None:
-            self.caso_uno(current)
+            check_delete(current)
         self.__size -= 1
 
     
@@ -245,11 +245,22 @@ class RBTree:
         a.update_height()
         a.update_black_height()
         return
-    
-        
-        
-        
-        
+       
+    def check_delete(self, current):
+        if(current.color == 1 and self.has_childs(current) == 0):
+            current.parent = None
+        if(current.parent == None):
+            return self.caso_uno(current)
+        if current.color == 0:
+            child = self.has_childs(current)
+            if child == 1:
+                if self.has_childs(child) == 0:
+                    return self.caso_tres(current)
+            if child.has_childs(child) == 2:
+                if self.childhas_child()
+                return self.caso_cuatro(current)
+
+# El nodo a extraer es la raíz del árbol   
     def caso_uno(self, current):
         if current.parent == None:
            #caso raiz
@@ -277,74 +288,41 @@ class RBTree:
             #estan los dos hijos
             self.__root = current.right
             current.right.parent = None
-            
+            current.right.color = 0
+            current.height = 1
+            current.black_height = 0
+            current.right = None
+            current.left= None
             current.parent = None
+            current.left.parent = current.right
+            current.left.update_height()
+            current.left.update_black_height()
+            current.left.right = current.right.left
             return
+        #####################
+        #   caso 1 acabado  #
+        #####################
         
+    #Caso 3: El nodo a eliminar es negro y el sucesor es rojo
+    
+        
+    def caso_tres_derecho(self, current):
         if current.parent.left == current:
-            #hijo izquierdo
-            if current.left == None:
-                if current.right == None:
-                    current.parent.left = None
-                    current.parent = None
-                    return
-                current.parent.left = current.right
-                current.right.parent = current.parent
-                current.parent = None
-                return
-            if current.right == None:
-                current.parent.left = current.left
-                current.left.parent = current.parent
-                current.parent = None
-                return
-            #estan los dos hijos
-
             current.parent.left = current.right
+<<<<<<< HEAD
             current.right.parent = current.parent
             current.parent = None
             return
         if current.parentt.right == current:
             #hijo derecho
             return 
+=======
+            
+        else:
+            current.parent.right = current.right
+>>>>>>> 90f17efeeec3ab6c8dabdf75d6fbda95207c8b16
         
-        if current.color == 1:
-            if(current.right):
-                if current.parent.right == current:
-                    current.parent.right = current.right
-                else:
-                    current.parent.left = current.right
-                current.right.parent = current.parent
-                current.parent = None
-                return
-            if(current.left):
-                if current.parent.right == current:
-                    current.parent.right = current.left
-                else:
-                    current.parent.left = current.left
-                current.left.parent = current.parent
-                current.parent = None
-                return
-        # revisarr    
-            current.parent
-            return
-        if current.parent is None:
-            return
-        if current.parent.left == current:
-            brother = current.parent.right
-            if brother.color == 1:
-                brother.color = 0
-                current.parent.color = 1
-                self.rotate_left(current.parent)
-                return self.check_delete(current)
-            if brother.left is None or brother.left.color == 0:
-                if brother.right is None or brother.right.color == 0:
-                    brother.color = 1
-                    return self.check_delete(current.parent)
-                brother.color = 1
-                brother.right.color = 0
-                self.rotate_left(brother)
-                return self.check_delete(current)
-            brother.color = current.parent.color
-            current.parent.color = 0
-            brother.right.color = 0
-            self.rotate_left(current.parent)
+    def caso_tres_izquierdo(self, current):
+        pass    
+            
+            
