@@ -3,10 +3,18 @@ from arbol_rn import RBTree
 from node import Node
 
 class TestRBTree(unittest.TestCase):
+    #Decoramos comentando cuando inician y finalizan las pruebas
+    @classmethod
+    def setUpClass(cls):
+        print("Se van a ejecutar las pruebas de la clase RBTree")
     
     def setUp(self):
         self.tree = RBTree()
-    
+
+    def tearDown(self):
+        self.tree = RBTree()
+
+    #Comenzamos los test
     def test_initialization(self):
         """Test that a new RBTree is properly initialized."""
         self.assertIsNone(self.tree.get_root)
@@ -99,6 +107,10 @@ class TestRBTree(unittest.TestCase):
         # current, parent = self.tree.find_node(7)
         # self.assertIsNone(current)
         # self.assertEqual(parent.value, 5)
+
+    @classmethod
+    def tearDownClass(cls):
+        print("Han finalizado las pruebas del árbol")
 
 if __name__ == '__main__':
     unittest.main()

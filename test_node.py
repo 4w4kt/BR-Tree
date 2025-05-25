@@ -14,7 +14,7 @@ class test_node(unittest.TestCase):
         self.color = 0
         self.nodo_base = Node(self.value, self.color)
 
-    #Probar
+    #Se limpia el nodo después de cada prueba
     def tearDown(self):
         self.value = 0
         self.color = 0
@@ -30,6 +30,7 @@ class test_node(unittest.TestCase):
         self.assertEqual(primero.left, None, "Left debería ser None")
         self.assertEqual(primero.right, None, "Right debería ser None")
 
+    #Probamos la función de cambio de color
     def test_changecolor(self):
         colorin = Node(0, 0)
         colorin.change_color(1)
@@ -39,6 +40,7 @@ class test_node(unittest.TestCase):
     def test_upheight(self):
         alturin = Node(0, 0)
     
+    #Comprobación de si un nodo tiene hijos o no
     def test_haschilds(self):
         soltero = Node(0, 0)
         padre = Node(0, 0, None, True, None)
@@ -47,6 +49,7 @@ class test_node(unittest.TestCase):
         self.assertEqual(padre.has_childs(), 1, "Padre tiene 1 hijo")
         self.assertEqual(superpadre.has_childs(), 2, "Superpadre tiene 2")
     
+    #Comprobación de sucesores derechos
     def test_rsucesor(self):
         soltero = Node(0, 0)
         padre = Node(0, 0, None, True, None)
@@ -56,6 +59,7 @@ class test_node(unittest.TestCase):
         #Padre tiene sucesor derecho, no sé lo que devuelve la función
         #self.assertEqual(padre_r.has_childs(), 2, "Padre tiene sucesor derecho")
 
+    #Comprobación de sucesores
     def test_sucesor(self):
         soltero = Node(0, 0)
         padre = Node(0, 0, None, True, None)     
