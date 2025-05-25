@@ -3,7 +3,7 @@ import auxiliares as aux
 #color negro = 1
 #color rojo = 0
 class Node:
-    def __init__(self, value, color, parent=None, left=None, right=None):
+    def __init__(self, value, color = 0, parent=None, left=None, right=None):
         self.value = value
         self.left = left
         self.right = right

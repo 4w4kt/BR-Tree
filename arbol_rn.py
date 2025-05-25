@@ -1,4 +1,6 @@
 from node import Node
+import matplotlib.pyplot as plt
+
 
 
 class RBTree:
@@ -97,9 +99,9 @@ class RBTree:
     
     def insert(self, value):
         current, parent = self.find_node(value)
-        if (current is not None):
+        if (current is not None): # si el nodo ya existe
             return False
-        if (parent is None):
+        if (parent is None): # si el arbol esta vacio
             current = Node(value, 1)
             self.__size = 1
             return True
@@ -124,7 +126,7 @@ class RBTree:
         if current.parent is None:
             current.color = 0
             return
-        if current.parent.color == 0: # pasa su el padre es rojo
+        if current.parent.color == 0: # pasa si el padre es rojo
             return
         if current.parent.parent is None: # pasa si existe abuelo
             current.color = 0
@@ -300,5 +302,71 @@ class RBTree:
         
     def caso_tres_izquierdo(self, current):
         pass    
-            
-            
+
+
+
+
+
+
+
+    def print_tree(self):
+        def _print_subtree(node, prefix="", is_left=True):
+        if node is not None:
+            print(prefix + ("├── " if is_left else "└── ") + f"{node.value}({node.color_str()})")
+            if node.left or node.right:
+                if node.left:
+                    _print_subtree(node.left, prefix + ("│   " if is_left else "    "), True)
+                else:
+                    print(prefix + ("│   " if is_left else "    ") + "├── [None]")
+                if node.right:
+                    _print_subtree(node.right, prefix + ("│   " if is_left else "    "), False)
+                else:
+                    print(prefix + ("│   " if is_left else "    ") + "└── [None]")
+
+    if self.__root is None:
+        print("[Empty tree]")
+    else:
+        print(f"{self.__root.value}({self.__root.color_str()})")
+        _print_subtree(self.__root.left, "", True)
+        _print_subtree(self.__root.right, "", False)
+
+
+
+def show_tree(self):
+    if self.__root is None:
+        print("Árbol vacío.")
+        return
+
+    fig, ax = plt.subplots(figsize=(12, 6))
+    ax.axis('off')
+
+    def draw_node(node, x, y, dx, level):
+        if node is None:
+            return
+
+        # Dibujar nodo
+        color = 'red' if node.color == 1 else 'black'
+        ax.plot(x, y, 'o', color=color, markersize=20)
+        ax.text(x, y, f'{node.value}', color='white', ha='center', va='center', fontsize=10)
+
+        # Coordenadas del siguiente nivel
+        next_y = y - 1.5
+        shift = dx / 2
+
+        if node.left:
+            # Línea a la izquierda
+            ax.plot([x, x - dx], [y, next_y], color='gray')
+            draw_node(node.left, x - dx, next_y, shift, level + 1)
+
+        if node.right:
+            # Línea a la derecha
+            ax.plot([x, x + dx], [y, next_y], color='gray')
+            draw_node(node.right, x + dx, next_y, shift, level + 1)
+
+    # Llama a la función recursiva con parámetros iniciales
+    draw_node(self.__root, x=0, y=0, dx=8, level=1)
+
+    ax.set_xlim(-10, 10)
+    ax.set_ylim(-10, 2)
+    plt.title("Árbol Rojo-Negro (solo matplotlib)")
+    plt.show()
