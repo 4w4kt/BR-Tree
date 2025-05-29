@@ -7,7 +7,7 @@ class test_node(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print("Se van a ejecutar las pruebas de la clase nodo")
-    """
+    
     #Creamos un nodo base para todas las pruebas
     def setUp(self):
         self.value = 0
@@ -21,8 +21,8 @@ class test_node(unittest.TestCase):
         self.nodo_base = Node(self.value, self.color)
     
 
-    #Creación de nodo sin parámetros 
-    def test_create(self):
+    #CREACIÓN DE NODO SIN PARÁMETROS
+    def test_create_empty(self):
         primero = Node(0)
         self.assertEqual(primero.value, 0, "Los valores no son iguales")
         self.assertEqual(primero.color, 0, "Los valores no son iguales")
