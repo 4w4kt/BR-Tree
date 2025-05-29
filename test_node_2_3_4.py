@@ -20,54 +20,47 @@ class test_node(unittest.TestCase):
         self.color = 0
         self.nodo_base = Node(self.value, self.color)
     
-
     #CREACIÓN DE NODO SIN PARÁMETROS
     def test_create_empty(self):
-        primero = Node(0)
-        self.assertEqual(primero.value, 0, "Los valores no son iguales")
-        self.assertEqual(primero.color, 0, "Los valores no son iguales")
+        primero = Node([0])
+        self.assertEqual(primero.values, [0], "El valor debería ser 0")
         self.assertEqual(primero.parent, None, "No debería tener padre")
-        self.assertEqual(primero.left, None, "Left debería ser None")
-        self.assertEqual(primero.right, None, "Right debería ser None")
+        self.assertEqual(primero.nivel, 0, "El nivel debería ser 0")
 
-    #Probamos la función de cambio de color
-    def test_is_leaf(self):
-        colorin = Node(0, 0)
-        colorin.change_color(1)
-        self.assertEqual(colorin.color, 1, "El color no se cambió") 
+    #CREACIÓN DE NODO CON PARÁMETROS
+    def test_create_no_empty(self):
+        padre = Node([3])
+        hijo = Node([1], padre, 1)
+        self.assertEqual(hijo.values, [1], "El valor debería ser 1")
+        self.assertEqual(hijo.parent, Node([3]), "Su padre debería ser \"padre\"")
+        self.assertEqual(hijo.nivel, 1, "El nivel debería ser 1")
+
+    #PROBAMOS POR DONDE DEBERÍAMOS BAJAR SI LO NECESITARAMOS PARA ALGUNA OPERACIÓN
+    def test_busqueda_dicotomica(self):
+        lleno = Node([5, 3, 7])
+        self.assertEqual(lleno.find_path(5), 2, "Se debería bajar por la segunda pocisión") 
     
-    #Este lo dejamos así por ahora, puede que no se pueda hacer aqui
-    def test_find_path(self):
-        alturin = Node(0, 0)
-    
-    #Comprobación de si un nodo tiene hijos o no
+    #AÑADIMOS VALORES AL NODO
     def test_insert_leaf(self):
-        soltero = Node(0, 0)
-        padre = Node(0, 0, None, True, None)
-        superpadre = Node(0, 0, None, True, True)
-        self.assertEqual(soltero.has_childs(), 0, "Soltero no tiene hijos") 
-        self.assertEqual(padre.has_childs(), 1, "Padre tiene 1 hijo")
-        self.assertEqual(superpadre.has_childs(), 2, "Superpadre tiene 2")
+        amoroso = Node([0])
+        amoroso.insert_leaf(4)
+        self.assertEqual(amoroso.values, [0,4], "Derbía tener 0, y 4 como valores")
     
-    #Comprobación de sucesores derechos
-    def test_split(self):
-        soltero = Node(0, 0)
-        padre = Node(0, 0, None, True, None)
-        padre_r = Node(0, 0, None, True, None)
-        self.assertEqual(soltero.has_childs(), None, "Soltero no tiene sucesor derecho") 
-        self.assertEqual(padre.has_childs(), None, "Padre no tiene sucesor derecho")
-        #Padre tiene sucesor derecho, no sé lo que devuelve la función
-        #self.assertEqual(padre_r.has_childs(), 2, "Padre tiene sucesor derecho")
-
-    #Comprobación de sucesores
-    def test_insert_brother(self):
-        soltero = Node(0, 0)
-        padre = Node(0, 0, None, True, None)     
-        self.assertEqual(soltero.has_childs(), None, "Soltero no tiene sucesor derecho") 
-        #No se lo que debería devolver la función
-        self.assertEqual(padre.has_childs(), None, "Padre tiene sucesor derecho")
-
-    """
+    #AÑADIMOS BASTANTES VALORES AL NODO
+    def test_insert_leaf_v2(self):
+        amoroso = Node([0])
+        amoroso.insert_leaf(4)
+        amoroso.insert_leaf(2)
+        self.assertEqual(amoroso.values, [0, 2, 4], "Derbía tener 0, 2 y 4 como valores")
+    
+    #COMPROBAMOS EL MÉTODO EQUALS
+    def test_equals(self):
+        conejo1 = Node([0])
+        conejo2 = Node([0])
+        conejo3 = Node([105])
+        self.assertEqual(conejo1, conejo2, "Los nodos deberían ser igguales")
+        self.assertNotEqual(conejo1, conejo3, "Los nodos deberían ser diferentes")
+    
     @classmethod
     def tearDownClass(cls):
         print("Han finalizado las pruebas del nodo")

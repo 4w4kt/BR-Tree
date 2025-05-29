@@ -91,9 +91,6 @@ class test_tree(unittest.TestCase):
 
     #PARA MOSTRAR EL ARBOL HAY OTRA PAGINA DE CÓDIGO EXCLUSIVA PARA ELLO
 
-    
-
-
     @classmethod
     def tearDownClass(cls):
         print("Han finalizado las pruebas del la clase tree")
