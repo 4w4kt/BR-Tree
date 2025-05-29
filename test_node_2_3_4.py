@@ -2,7 +2,7 @@ import unittest
 from tree_2_3_4 import Tree234
 from node_2_3_4 import Node
 
-class test_node(unittest.TestCase):
+class test_node(unittest.TestCase): 
     #Decoramos comentando cuando inician y finalizan las pruebas
     @classmethod
     def setUpClass(cls):

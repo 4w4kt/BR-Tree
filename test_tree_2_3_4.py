@@ -6,7 +6,7 @@ class test_tree(unittest.TestCase):
 
 #Decoramos comentando cuando inician y finalizan las pruebas
     @classmethod
-    def setUpClass(cls):
+    def setUpClass(cls): 
         print("Se van a ejecutar las pruebas de la clase tree")
 
     #CREAMOS UN ÁRBOL VACIO
