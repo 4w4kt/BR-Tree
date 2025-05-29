@@ -1,5 +1,6 @@
 # tree_2_3_4.py
 import node_2_3_4 as Node
+import matplotlib.pyplot as plt
 
 class Tree234:
     def __init__(self):
@@ -48,35 +49,6 @@ class Tree234:
                 return current.values[i]
             return False
     
-    
-    def show_tree(self):
-        if self.root is None:
-            return
-        self.show_tree_node(self.root)
-    
-    
-    
-    
-    
-    
-    
-    
-    ###########################################################3
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    import node_2_3_4 as Node
-import matplotlib.pyplot as plt
-
     def show_tree(self):
         if self.root is None:
             print("Tree is empty")
