@@ -1,9 +1,7 @@
-import elementos_2_3_4 as Element
-
 class Node:
     def __init__(self, value, parent=None, nivel=0):
         self.values = value
-        self.childen = []
+        self.children = []
         self.parent = None
         self.nivel = nivel
 

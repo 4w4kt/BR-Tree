@@ -1,5 +1,5 @@
 # tree_2_3_4.py
-import node_2_3_4 as Node
+from node_2_3_4 import *
 import matplotlib.pyplot as plt
 
 class Tree234:
@@ -19,15 +19,14 @@ class Tree234:
             
     def insert_node(self, value):
         current = self.root
-        while not current.isleaf():
-            path = self.find_path(current, value)
+        while not current.is_leaf():
+            path = current.find_path(current, value)
             if current.values[(path)%len(current.values)] == value:
                 return False
             current = current.children[path]
-
-        if (self.insert_leaf(current, value) == -1):
+        if (current.insert_leaf(value) == -1):
             return False
-        size += 1
+        self.size += 1
         return True
         
     def delete(self, value):
@@ -39,9 +38,9 @@ class Tree234:
         if self.root is None:
             return None
         current = self.root
-        while not current.isleaf():
-            path = self.find_path(self.root, value)
-            if self.values[(path)%len(self.value)] == value:
+        while not current.is_leaf():
+            path = current.find_path(self.root, value)
+            if current.values[(path)%len(self.value)] == value:
                 return False
             current= current.children[path]
         for i in range(len(current.values)):
@@ -69,7 +68,7 @@ class Tree234:
         def assign_positions(node, depth=0):
             nonlocal x_counter
             # Si es hoja, asigna posición secuencial en x
-            if node.isleaf():
+            if node.is_leaf():
                 positions[node] = (x_counter, -depth)
                 x_counter += 1
             else:
