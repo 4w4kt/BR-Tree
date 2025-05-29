@@ -52,3 +52,6 @@ class Node:
         
     def __str__(self):
         return str(self.values)
+    
+    def __eq__(self, other):
+        return self.values == other.values and self.children == other.children
