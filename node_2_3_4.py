@@ -2,14 +2,14 @@ class Node:
     def __init__(self, value, parent=None, nivel=0):
         self.values = value
         self.children = []
-        self.parent = None
+        self.parent = parent
         self.nivel = nivel
 
     def is_leaf(self):
         return len(self.children) == 0
 
     def find_path(self, value):
-        i = len(self.children) - 1
+        i = len(self.values) - 1
         while i >= 0 and value <= self.values[i]:
             i -= 1
         return i + 1
@@ -49,3 +49,6 @@ class Node:
         self.children.append(node.values[2])
         if len(self.values) == 4:
             return self.split()
+        
+    def __str__(self):
+        return str(self.values)

@@ -11,7 +11,7 @@ class Tree234:
         
     def insert(self, value):
         if self.root is None:
-            self.root = Node([value], 0)
+            self.root = Node([value])
             self.size = 1
             self.height = 1
             return
@@ -20,7 +20,7 @@ class Tree234:
     def insert_node(self, value):
         current = self.root
         while not current.is_leaf():
-            path = current.find_path(current, value)
+            path = current.find_path(value)
             if current.values[(path)%len(current.values)] == value:
                 return False
             current = current.children[path]
