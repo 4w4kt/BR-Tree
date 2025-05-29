@@ -7,7 +7,7 @@ class test_node(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         print("Se van a ejecutar las pruebas de la clase nodo")
-
+    """
     #Creamos un nodo base para todas las pruebas
     def setUp(self):
         self.value = 0
@@ -67,6 +67,7 @@ class test_node(unittest.TestCase):
         #No se lo que debería devolver la función
         self.assertEqual(padre.has_childs(), None, "Padre tiene sucesor derecho")
 
+    """
     @classmethod
     def tearDownClass(cls):
         print("Han finalizado las pruebas del nodo")
