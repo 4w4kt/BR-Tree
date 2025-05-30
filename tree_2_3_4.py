@@ -116,19 +116,6 @@ class Tree234:
             ax.text(x, y, txt,
                     ha='center', va='center',
                     fontsize=10, fontweight='bold')
-
-        # 2c) punteros en hojas
-        for node, (x, y) in positions.items():
-            if node.is_leaf():
-                k = len(node.values)
-                # k+1 punteros, distribuidos dentro del diámetro del nodo
-                xs = np.linspace(x-big_r, x+big_r, k+1)
-                for px in xs:
-                    ptr = plt.Circle((px, y - y_offset),
-                                    ptr_r,
-                                    facecolor='black',
-                                    edgecolor='none')
-                    ax.add_patch(ptr)
-
+            
         plt.tight_layout()
         plt.show()  
