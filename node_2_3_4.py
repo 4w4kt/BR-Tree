@@ -86,7 +86,7 @@ class Node:
                     self.values.append(self.parent.values[i])
                     return self.parent.delete_brother(i)
             self.parent.children[-2].values.append(self.parent.values.pop())
-            self.parent.children.pop()            
+            self.parent.children.pop()         
     
     def sucesor_simetrico(self, node, pop = 1):
         while not node.is_leaf():

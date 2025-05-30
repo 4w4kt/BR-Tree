@@ -60,6 +60,7 @@ class Tree234:
         for i in range(len(current.values)):
             if current.values[i] == value:
                 return current.values[i]
+        return False
         
         
     def conteins(self, value):
@@ -74,7 +75,7 @@ class Tree234:
         for i in range(len(current.values)):
             if current.values[i] == value:
                 return True
-            return False
+        return False
 
     def show_plot(self):
         """
