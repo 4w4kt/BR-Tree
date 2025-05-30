@@ -68,7 +68,7 @@ class test_tree(unittest.TestCase):
     """INICIO DE TESTS DE EXTRACCIONES"""
     #DELETE DE ÁRBOL CON MÁS DE 300 CLAVES-TRUE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_true(self):
+    def test_delete_extremo_true(self):
         extremista = Tree234()
         for v in range(1, 302):
             extremista.insert(v)
@@ -80,7 +80,7 @@ class test_tree(unittest.TestCase):
     
     #DELETE DE ÁRBOL CON MÁS DE 300 CLAVES-FALSE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_false(self):
+    def test_delete_extremo_false(self):
         medianito = Tree234()
         for v in range(1, 302):
             medianito.insert(v)
@@ -92,7 +92,7 @@ class test_tree(unittest.TestCase):
 
     #DELETE DE ÁRBOL CON MÁS DE 500 CLAVES-TRUE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_true_v2(self):
+    def test_delete_extremo_true_v2(self):
         extremista = Tree234()
         for v in range(1, 502):
             extremista.insert(v)
@@ -104,7 +104,7 @@ class test_tree(unittest.TestCase):
 
     #DELETE DE ÁRBOL CON MÁS DE 500 CLAVES-FALSE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_false_v2(self):
+    def test_delete_extremo_false_v2(self):
         medianito = Tree234()
         for v in range(1, 502):
             medianito.insert(v)
@@ -116,7 +116,7 @@ class test_tree(unittest.TestCase):
 
     #DELETE DE ÁRBOL CON MÁS DE 800 CLAVES-TRUE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_true_v3(self):
+    def test_delete_extrremo_true_v3(self):
         extremista = Tree234()
         for v in range(1, 802):
             extremista.insert(v)
@@ -128,7 +128,7 @@ class test_tree(unittest.TestCase):
     
     #DELETE DE ÁRBOL CON MÁS DE 800 CLAVES-FALSE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_false_v3(self):
+    def test_delete_extremo_false_v3(self):
         medianito = Tree234()
         for v in range(1, 802):
             medianito.insert(v)
@@ -140,7 +140,7 @@ class test_tree(unittest.TestCase):
 
     #DELETE DE ÁRBOL CON MÁS DE 1000 CLAVES-TRUE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_true_v4(self):
+    def test_delete_extremo_true_v4(self):
         extremista = Tree234()
         for v in range(1, 1002):
             extremista.insert(v)
@@ -152,7 +152,7 @@ class test_tree(unittest.TestCase):
     
     #DELETE DE ÁRBOL CON MÁS DE 1000 CLAVES-FALSE
     #HAY QUE HACER COMPROBACIONES CON FIND
-    def test_delete_medium_false_v4(self):
+    def test_delete_extremo_false_v4(self):
         medianito = Tree234()
         for v in range(1, 1002):
             medianito.insert(v)
@@ -165,24 +165,81 @@ class test_tree(unittest.TestCase):
 
 
     """INICIO DE TESTS DE BÚSQUEDAS"""
-    #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA
-    def test_find_no_empty(self):
-        medio_lleno = Tree234()
-        medio_lleno.insert(5)
-        self.assertEqual(medio_lleno.find_node(7), False, "Debería devolver false")
-    
-    #BUSQUEDA DE ÁRBOL NO VACIO
-    def test_find_no_empty_2(self):
-        medio_lleno = Tree234()
-        medio_lleno.insert(5)
-        #self.assertEqual(medio_lleno.find_node(5), 5, "Debería devolver el valor 5")
-
-    #BUSQUEDA DE ÁRBOL CON 3 CLAVES
-    #NO FUNCIONA
-    def test_find_no_empty_v2(self):
-        lleno = Tree234()
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 300 CLAVES
+    def test_find_extremo(self):
+        medianito = Tree234()
+        for v in range(1, 302):
+            medianito.insert(v)
         
-        #self.assertEqual(lleno.find_node(5), 5, "Debería devolver el valor 5")    
+        for i in range(1, 302):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 300 CLAVES FALLIDA
+    def test_find_extremo_fail(self):
+        medianito = Tree234()
+        for v in range(1, 302):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(302), "Debería devolver False")
+        self.assertFalse(medianito.find_node(3010), "Debería devolver False")
+        self.assertFalse(medianito.find_node(400), "Debería devolver False")  
+    
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 500 CLAVES
+    def test_find_extremo_v2(self):
+        medianito = Tree234()
+        for v in range(1, 502):
+            medianito.insert(v)
+        
+        for i in range(1, 502):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 500 CLAVES FALLIDA
+    def test_find_extremo_fail_v2(self):
+        medianito = Tree234()
+        for v in range(1, 502):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(502), "Debería devolver False")
+        self.assertFalse(medianito.find_node(700), "Debería devolver False")
+        self.assertFalse(medianito.find_node(507), "Debería devolver False")
+    
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 800 CLAVES
+    def test_find_extremo_v3(self):
+        medianito = Tree234()
+        for v in range(1, 802):
+            medianito.insert(v)
+        
+        for i in range(1, 802):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 800 CLAVES FALLIDA
+    def test_find_extremo_fail_v3(self):
+        medianito = Tree234()
+        for v in range(1, 802):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(802), "Debería devolver False")
+        self.assertFalse(medianito.find_node(910), "Debería devolver False")
+        self.assertFalse(medianito.find_node(1000), "Debería devolver False")
+    
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 1000 CLAVES
+    def test_find_extremo_v4(self):
+        medianito = Tree234()
+        for v in range(1, 1002):
+            medianito.insert(v)
+        
+        for i in range(1, 1002):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 1000 CLAVES FALLIDA
+    def test_find_extremo_fail_v4(self):
+        medianito = Tree234()
+        for v in range(1, 1002):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(1002), "Debería devolver False")
+        self.assertFalse(medianito.find_node(1010), "Debería devolver False")
+        self.assertFalse(medianito.find_node(1200), "Debería devolver False")
     """FIN DE TESTS DE BÚSQUEDAS"""
 
     #PARA MOSTRAR EL ARBOL HAY OTRA PAGINA DE CÓDIGO EXCLUSIVA PARA ELLO

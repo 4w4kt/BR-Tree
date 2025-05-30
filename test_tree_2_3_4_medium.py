@@ -165,29 +165,81 @@ class test_tree(unittest.TestCase):
 
 
     """INICIO DE TESTS DE BÚSQUEDAS"""
-    #BUSQUEDA DE ÁRBOL VACIO
-    def test_find_empty(self):
-        vacio = Tree234()
-        self.assertEqual(vacio.find_node(5), False, "No debería haber un valor a buscar")
-
-    #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA
-    def test_find_no_empty(self):
-        medio_lleno = Tree234()
-        medio_lleno.insert(5)
-        self.assertEqual(medio_lleno.find_node(7), False, "Debería devolver false")
-    
-    #BUSQUEDA DE ÁRBOL NO VACIO
-    def test_find_no_empty_v2(self):
-        medio_lleno = Tree234()
-        medio_lleno.insert(5)
-        self.assertEqual(medio_lleno.find_node(5), 5, "Debería devolver el valor 5")
-
-    #BUSQUEDA DE ÁRBOL CON 3 CLAVES
-    #NO FUNCIONA
-    def test_find_no_empty_v3(self):
-        lleno = Tree234()
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 15 CLAVES
+    def test_find_medium(self):
+        medianito = Tree234()
+        for v in range(1, 16):
+            medianito.insert(v)
         
-        #self.assertEqual(lleno.find_node(5), 5, "Debería devolver el valor 5")    
+        for i in range(1, 16):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 15 CLAVES FALLIDA
+    def test_find_medium_fail(self):
+        medianito = Tree234()
+        for v in range(1, 16):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(78), "Debería devolver False")
+        self.assertFalse(medianito.find_node(56), "Debería devolver False")
+        self.assertFalse(medianito.find_node(38), "Debería devolver False")
+    
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 20 CLAVES
+    def test_find_medium_v2(self):
+        medianito = Tree234()
+        for v in range(1, 23):
+            medianito.insert(v)
+        
+        for i in range(1, 23):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 20 CLAVES FALLIDA
+    def test_find_medium_fail_v2(self):
+        medianito = Tree234()
+        for v in range(1, 23):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(45), "Debería devolver False")
+        self.assertFalse(medianito.find_node(24), "Debería devolver False")
+        self.assertFalse(medianito.find_node(0), "Debería devolver False")
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 30 CLAVES
+    def test_find_medium_v3(self):
+        medianito = Tree234()
+        for v in range(1, 32):
+            medianito.insert(v)
+        
+        for i in range(1, 32):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+    
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 30 CLAVES FALLIDA
+    def test_find_medium_fail_v3(self):
+        medianito = Tree234()
+        for v in range(1, 32):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(45), "Debería devolver False")
+        self.assertFalse(medianito.find_node(32), "Debería devolver False")
+        self.assertFalse(medianito.find_node(39), "Debería devolver False")
+    
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 50 CLAVES
+    def test_find_medium_v4(self):
+        medianito = Tree234()
+        for v in range(1, 51):
+            medianito.insert(v)
+        
+        for i in range(1, 51):
+            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+
+    #BUSQUEDA DE ÁRBOL CON MÁS DE 50 CLAVES FALLIDA
+    def test_find_medium_fail_v4(self):
+        medianito = Tree234()
+        for v in range(1, 51):
+            medianito.insert(v)
+        
+        self.assertFalse(medianito.find_node(51), "Debería devolver False")
+        self.assertFalse(medianito.find_node(60), "Debería devolver False")
+        self.assertFalse(medianito.find_node(90), "Debería devolver False")
     """FIN DE TESTS DE BÚSQUEDAS"""
     
     #PARA MOSTRAR EL ARBOL HAY OTRA PAGINA DE CÓDIGO EXCLUSIVA PARA ELLO
