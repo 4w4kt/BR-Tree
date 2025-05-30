@@ -61,6 +61,21 @@ class Tree234:
             if current.values[i] == value:
                 return current.values[i]
             return False
+        
+        
+    def conteins(self, value):
+        if self.root is None:
+            return False
+        current = self.root
+        while not current.is_leaf():
+            path = current.find_path(self.root, value)
+            if current.values[(path)%len(self.value)] == value:
+                return True
+            current= current.children[path]
+        for i in range(len(current.values)):
+            if current.values[i] == value:
+                return True
+            return False
 
     def show_plot(self):
         """
