@@ -51,12 +51,20 @@ class Node:
                 self.values.insert(i, node.values[2])
                 self.children[i] = Node (left, self,  node.children[0:3])
                 self.children.insert(i+1, Node(right, self, node.children[3:]))
+                for child in self.children:
+                    child.parent = self
+                    for childre2 in child.children:
+                        childre2.parent = child
                 if len(self.values) >= 4:
                     return self.split()
                 return
         self.values.append(node.values[2])
         self.children[-1] = (Node(left, self, node.children[0:3]))
         self.children.append(Node(right, self, node.children[3:]))
+        for child in self.children:
+            child.parent = self
+            for childre2 in child.children:
+                childre2.parent = child
         if len(self.values) >= 4:
             return self.split()
         
