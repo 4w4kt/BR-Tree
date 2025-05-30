@@ -68,8 +68,8 @@ class Tree234:
             return False
         current = self.root
         while not current.is_leaf():
-            path = current.find_path(self.root, value)
-            if current.values[(path)%len(self.value)] == value:
+            path = current.find_path(value)
+            if current.values[(path)%len(current.values)] == value:
                 return True
             current= current.children[path]
         for i in range(len(current.values)):
