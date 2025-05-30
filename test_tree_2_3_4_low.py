@@ -89,7 +89,7 @@ class test_tree(unittest.TestCase):
     #BUSQUEDA DE ÁRBOL VACIO
     def test_find_empty(self):
         vacio = Tree234()
-        self.assertEqual(vacio.find_node(5), None, "No debería haber un valor a buscar")
+        self.assertEqual(vacio.find_node(5), False, "No debería haber un valor a buscar")
 
     #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA
     def test_find_no_empty(self):
@@ -98,14 +98,14 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medio_lleno.find_node(7), False, "Debería devolver false")
     
     #BUSQUEDA DE ÁRBOL NO VACIO
-    def test_find_no_empty(self):
+    def test_find_no_empty_v2(self):
         medio_lleno = Tree234()
         medio_lleno.insert(5)
         self.assertEqual(medio_lleno.find_node(5), 5, "Debería devolver el valor 5")
 
     #BUSQUEDA DE ÁRBOL CON 3 CLAVES
     #NO FUNCIONA
-    def test_find_no_empty_v2(self):
+    def test_find_no_empty_v3(self):
         lleno = Tree234()
         
         #self.assertEqual(lleno.find_node(5), 5, "Debería devolver el valor 5")    
