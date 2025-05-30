@@ -3,7 +3,18 @@ from tree_2_3_4 import *
 
 
 class _2_3_4_test(unittest.TestCase):
+
+    """
+       LOS SHOW_PLOT DE LOS TEST ESTARÁN
+       COMENTADOS PARA NO SATURAR, SI SE
+       QUIERE VER SU VISUALIZACIÓN, HAY QUE 
+       DESCOMENTARLO
+    """
     #Decoramos comentando cuando inician y finalizan las pruebas
+    @classmethod
+    def setUpClass(cls): 
+        print("Se van a ejecutar las pruebas de la clase tree_set")
+    
     def setUp(self):
         self.tree = Tree234()
 
@@ -13,7 +24,13 @@ class _2_3_4_test(unittest.TestCase):
         self.tree.insert(1)
         self.tree.show_plot()
 
+    @classmethod
+    def tearDownClass(cls):
+        print("Han finalizado las pruebas de la clase tree_set")
+
 if __name__ == '__main__':
+    unittest.main()
+
     tree = Tree234()
     tree.insert(2)
     tree.insert(3)
