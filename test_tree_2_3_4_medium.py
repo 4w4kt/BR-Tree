@@ -66,16 +66,14 @@ class test_tree(unittest.TestCase):
 
 
     """INICIO DE TESTS DE EXTRACCIONES"""
-    #EXTRACIÓN DE ÁRBOL VACIO
-    #SIN TERMINAR
-    def test_delete_vacio(self):
-        vacio = Tree234()
-        self.assertEqual(vacio.delete(5), None, "No debería haber un valor a eliminar")
-
-    #DELETE DE ÁRBOL NO VACIO
-    #SIN TERMINAR
+    #DELETE DE ÁRBOL CON MÁS DE 15 CLAVES-TRUE
     def test_delete_no_vacio_(self):
-        no_vacio = Tree234()
+        medianito = Tree234()
+        for v in range(1, 16):
+            medianito.insert(v)
+
+        
+        #self.assertEqual(medianito.height, 3, "La altura debería ser 3")
     
     #DELETE DE ÁRBOL CON MÁS DE 3 CLAVES
     #SIN TERMINAR

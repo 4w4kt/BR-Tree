@@ -157,7 +157,7 @@ class test_tree(unittest.TestCase):
         vacio = Tree234()
         self.assertEqual(vacio.find_node(5), False, "No debería haber un valor a buscar")
 
-    #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA
+    #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA REVISAR
     def test_find_no_empty(self):
         medio_lleno = Tree234()
         medio_lleno.insert(5)
