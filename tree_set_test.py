@@ -17,7 +17,7 @@ if __name__ == '__main__':
     
     
     tree = Tree234()
-    for i in range(1, 1002):
+    for i in range(1, 4):
         tree.insert(i)
     tree.show_plot()
     

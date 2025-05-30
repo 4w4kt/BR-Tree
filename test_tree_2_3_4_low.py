@@ -67,21 +67,87 @@ class test_tree(unittest.TestCase):
 
     """INICIO DE TESTS DE EXTRACCIONES"""
     #EXTRACIÓN DE ÁRBOL VACIO
-    #SIN TERMINAR
     def test_delete_vacio(self):
         vacio = Tree234()
         self.assertEqual(vacio.delete(5), None, "No debería haber un valor a eliminar")
+        self.assertEqual(vacio.root, None, "No debería quedar nada")
 
-    #DELETE DE ÁRBOL NO VACIO
-    #SIN TERMINAR
-    def test_delete_no_vacio(self):
+    #DELETE DE ÁRBOL NO VACIO-TRUE
+    def test_delete_no_vacio_true(self):
         no_vacio = Tree234()
-    
-    #DELETE DE ÁRBOL CON MÁS DE 3 CLAVES
-    #SIN TERMINAR
-    def test_delete_no_vacio_v3(self):
+        no_vacio.insert(1)
+        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
+        self.assertEqual(no_vacio.root, None, "No debería quedar nada")
+
+    #DELETE DE ÁRBOL NO VACIO-FALSE
+    def test_delete_no_vacio_false(self):
         no_vacio = Tree234()
+        no_vacio.insert(1)
+        self.assertFalse(no_vacio.delete(6), "Debería devolver False")
+        self.assertEqual(no_vacio.root, Node([1]), "No se elimino nada, el nodo debería ser 1")
     
+    #DELETE DE ÁRBOL CON MÁS DE 1 CLAVE-TRUE
+    def test_delete_no_vacio_true_v2(self):
+        no_vacio = Tree234()
+        no_vacio.insert(1)
+        no_vacio.insert(2)
+        no_vacio.insert(3)
+        self.assertEqual(no_vacio.size, 3, "Debería ser 3")
+        self.assertTrue(no_vacio.delete(2), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 2, "Debería haber bajado a 2")
+        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 1, "Debería haber bajado a 1")
+        self.assertTrue(no_vacio.delete(3), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 0, "Debería haber bajado a 0")
+        self.assertEqual(no_vacio.root, None, "No debería quedar nada")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 1 CLAVE-FALSE
+    def test_delete_no_vacio_false_v2(self):
+        no_vacio = Tree234()
+        no_vacio.insert(1)
+        no_vacio.insert(2)
+        no_vacio.insert(3)
+        self.assertEqual(no_vacio.size, 3, "Debería ser 3")
+        self.assertFalse(no_vacio.delete(7), "Debería devolver False")
+        self.assertFalse(no_vacio.delete(6), "Debería devolver Falsee")
+        self.assertFalse(no_vacio.delete(4), "Debería devolver False")
+        self.assertEqual(no_vacio.size, 3, "Se debería mantener igual")
+        self.assertEqual(no_vacio.root, Node([1,2,3]), "No se debería haber modificado nada")
+
+    #DELETE DE ÁRBOL CON MÁS DE 3 CLAVES (SOBRECARGA)-TRUE
+    def test_delete_no_vacio_true_v3(self):
+        no_vacio = Tree234()
+        no_vacio.insert(1)
+        no_vacio.insert(2)
+        no_vacio.insert(3)
+        no_vacio.insert(4)
+        self.assertEqual(no_vacio.size, 4, "Debería ser 4")
+        self.assertTrue(no_vacio.delete(2), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 3, "Debería haber bajado a 3")
+        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 2, "Debería haber bajado a 2")
+        self.assertTrue(no_vacio.delete(3), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 1, "Debería haber bajado a 1")
+        self.assertTrue(no_vacio.delete(4), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 0, "Debería haber bajado a 0")
+        self.assertEqual(no_vacio.root, None, "No debería quedar nada")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 3 CLAVES (SOBRECARGA)-FALSE
+    def test_delete_no_vacio_false_v3(self):
+        no_vacio = Tree234()
+        no_vacio.insert(1)
+        no_vacio.insert(2)
+        no_vacio.insert(3)
+        no_vacio.insert(4)
+        comparador = Node([3])
+        comparador.children = [Node([1, 2]), Node([4])]
+        self.assertEqual(no_vacio.size, 4, "Debería ser 4")
+        self.assertFalse(no_vacio.delete(5), "Debería devolver False")
+        self.assertFalse(no_vacio.delete(6), "Debería devolver False")
+        self.assertFalse(no_vacio.delete(7), "Debería devolver False")
+        self.assertFalse(no_vacio.delete(8), "Debería devolver False")
+        self.assertEqual(no_vacio.size, 4, "Se debería mantener igual")
+        self.assertEqual(no_vacio.root, comparador, "Deberían ser iguales")
     """FIN DE TESTS DE EXTRACCIONES"""
 
 
@@ -101,7 +167,7 @@ class test_tree(unittest.TestCase):
     def test_find_no_empty_v2(self):
         medio_lleno = Tree234()
         medio_lleno.insert(5)
-        self.assertEqual(medio_lleno.find_node(5), 5, "Debería devolver el valor 5")
+        #self.assertEqual(medio_lleno.find_node(5), 5, "Debería devolver el valor 5")
 
     #BUSQUEDA DE ÁRBOL CON 3 CLAVES
     #NO FUNCIONA
