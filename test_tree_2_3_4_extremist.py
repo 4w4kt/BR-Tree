@@ -86,19 +86,85 @@ class test_tree(unittest.TestCase):
             medianito.insert(v)
 
         self.assertEqual(medianito.size, 301, "Debería ser 301")
-        for i in range(16, 21):
+        for i in range(302, 400):
             self.assertFalse(medianito.delete(i), "No se deberían eliminar")
-        self.assertEqual(medianito.size, 15, "El número de elementos se debería mantener igual")
+        self.assertEqual(medianito.size, 301, "El número de elementos se debería mantener igual")
 
+    #DELETE DE ÁRBOL CON MÁS DE 500 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true_v2(self):
+        extremista = Tree234()
+        for v in range(1, 502):
+            extremista.insert(v)
 
+        self.assertEqual(extremista.size, 501, "Debería ser 501")
+        for i in range(120, 400):
+            self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        self.assertEqual(extremista.size, 220, "Debería ser 220")
 
+    #DELETE DE ÁRBOL CON MÁS DE 500 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false_v2(self):
+        medianito = Tree234()
+        for v in range(1, 502):
+            medianito.insert(v)
 
+        self.assertEqual(medianito.size, 501, "Debería ser 501")
+        for i in range(502, 700):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 501, "El número de elementos se debería mantener igual")
 
+    #DELETE DE ÁRBOL CON MÁS DE 800 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true_v3(self):
+        extremista = Tree234()
+        for v in range(1, 802):
+            extremista.insert(v)
+
+        self.assertEqual(extremista.size, 801, "Debería ser 801")
+        for i in range(400, 700):
+            self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        self.assertEqual(extremista.size, 501, "Debería ser 501")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 800 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false_v3(self):
+        medianito = Tree234()
+        for v in range(1, 802):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 801, "Debería ser 801")
+        for i in range(802, 900):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 801, "El número de elementos se debería mantener igual")
+
+    #DELETE DE ÁRBOL CON MÁS DE 1000 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true_v4(self):
+        extremista = Tree234()
+        for v in range(1, 1002):
+            extremista.insert(v)
+
+        self.assertEqual(extremista.size, 1001, "Debería ser 1001")
+        for i in range(200, 900):
+            self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        self.assertEqual(extremista.size, 301, "Debería ser 301")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 1000 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false_v4(self):
+        medianito = Tree234()
+        for v in range(1, 1002):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 1001, "Debería ser 1001")
+        for i in range(1002, 1100):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 1001, "El número de elementos se debería mantener igual")
     """FIN DE TESTS DE EXTRACCIONES"""
 
 
     """INICIO DE TESTS DE BÚSQUEDAS"""
-
     #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA
     def test_find_no_empty(self):
         medio_lleno = Tree234()
