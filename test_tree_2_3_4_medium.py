@@ -246,7 +246,7 @@ class test_tree(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cls):
-        print("Han finalizado las pruebas de nivel medio del la clase tree")
+        print("Han finalizado las pruebas de nivel medio de la clase tree")
 
 
 if __name__ == '__main__':
