@@ -14,8 +14,6 @@ class _2_3_4_test(unittest.TestCase):
         self.tree.show_plot()
 
 if __name__ == '__main__':
-    
-    
     tree = Tree234()
     tree.insert(2)
     tree.insert(3)
@@ -29,17 +27,13 @@ if __name__ == '__main__':
     tree.insert(512)
     tree.insert(100)
     tree.insert(33)
-#   tree.show_plot()
     tree.insert(31)
-#   tree.show_plot()
     tree.insert(90)
     tree.insert(107)
     tree.insert(100)
     tree.insert(66)
     tree.insert(99)
-    tree.show_plot()
     tree.insert(67)
-    tree.show_plot()
     #insertamos muchos mas nodos
     tree.insert(82)
     tree.insert(10)
@@ -59,7 +53,13 @@ if __name__ == '__main__':
     tree.insert(17)
     tree.insert(18)
     tree.insert(19)
-    tree.show_plot()
     tree.delete(223)
+    tree.delete(219)
+    tree.insert(777)
+    tree.delete(215)
+    tree.delete(335)
+    tree.delete(777)
+    tree.show_plot()
+    tree.delete(333)
     tree.show_plot()
     

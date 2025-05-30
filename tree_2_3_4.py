@@ -59,8 +59,7 @@ class Tree234:
             current= current.children[path]
         for i in range(len(current.values)):
             if current.values[i] == value:
-                return current.values[(path)%len(self.value)]
-            return False
+                return current.values[i]
         
         
     def conteins(self, value):
@@ -76,7 +75,6 @@ class Tree234:
             if current.values[i] == value:
                 return True
             return False
-
 
     def show_plot(self):
         """
@@ -134,4 +132,4 @@ class Tree234:
                     fontsize=10, fontweight='bold')
             
         plt.tight_layout()
-        plt.show()  
+        plt.show()
