@@ -73,24 +73,25 @@ class Node:
     def delete_leaf(self, value):
         for i in range(len(self.values)):
             if value == self.values[i]:
-                self.values.pop(i)
-                self.fill_gap()
-                return 0
+                return self.fill_gap(self.values.pop(i))
         return -1
     
-    def fill_gap(self):
+    def fill_gap(self, value):
         if self.is_leaf():
             if len(self.values > 0):
                 return 0
-            self.parent.delete_brother(self.parent.values[0])
+            #derecha
+            for i in range(len(self.parent.values)):
+                if self.parent.values[i] > value:
+                    self.values.append(self.parent.values[i])
+                    self.parent.delete_brother(i)
     
     def sucesor_simetrico(self, node, pop = 1):
         while not node.is_leaf():
             node = node.children[0]
         if pop == 1:
             node.values.pop(0)
-            if len(node.values) == 0:
-                node.parent.values[0] = (node.parent.sucesor_simetrico(node.children[1], 0))
+            node.fill_gap(node.values[0])
         return node.values[0]
 
     def delete_brother(self,index):
