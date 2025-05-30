@@ -34,7 +34,7 @@ class Tree234:
     def delete(self, value):
         if self.root is None:
             return
-        self.delete_node(self.root, value)
+        self.delete_node(value)
 
         
     def delete_node(self, value):
@@ -50,16 +50,16 @@ class Tree234:
 
     def find_node(self, value):
         if self.root is None:
-            return None
+            return False
         current = self.root
         while not current.is_leaf():
-            path = current.find_path(self.root, value)
+            path = current.find_path(value)
             if current.values[(path)%len(self.value)] == value:
-                return False
+                return current.values[(path)%len(self.value)]
             current= current.children[path]
         for i in range(len(current.values)):
             if current.values[i] == value:
-                return current.values[i]
+                return current.values[(path)%len(self.value)]
             return False
         
         
@@ -76,6 +76,7 @@ class Tree234:
             if current.values[i] == value:
                 return True
             return False
+
 
     def show_plot(self):
         """
