@@ -70,23 +70,35 @@ class Node:
         
     
     
-    def delete_leaf(self, value):
+    def delete_leaf(self, value, index):
         for i in range(len(self.values)):
             if value == self.values[i]:
-                return self.fill_gap(self.values.pop(i))
+                self.values.pop(i)
+                return self.fill_gap(index)
         return -1
     
-    def fill_gap(self, value):
+    def fill_gap(self, index):
         if self.is_leaf():
             if len(self.values) > 0:
                 return 0
             #derecha
-            for i in range(len(self.parent.values)):
-                if self.parent.values[i] > value:
-                    self.values.append(self.parent.values[i])
-                    return self.parent.delete_brother(i)
-            self.parent.children[-2].values.append(self.parent.values.pop())
-            self.parent.children.pop()         
+            if index < len(self.parent.values):
+                self.values.append(self.parent.values[index])
+                return self.parent.delete_brother(index)
+            value = self.parent.values.pop()
+            self.parent.children[-2].values.append(value)
+            self.parent.children.pop()
+            return self.parent.fill_gap(self.parent.find_path(value))
+        #not leaf
+        if len(self.values) > 0:
+            return 0
+        value = self.parent.values.pop()
+        self.values.append(value)
+        self.parent.values.insert(index, self.parent.children[index].values.pop())
+        self.children.insert(index-1, self.parent.children[index].children.pop())
+        for node in self.children:
+            node.parent = self
+        return self.parent.fill_gap(self.parent.find_path(value))
     
     def sucesor_simetrico(self, node, pop = 1):
         while not node.is_leaf():

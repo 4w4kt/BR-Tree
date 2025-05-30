@@ -59,7 +59,7 @@ if __name__ == '__main__':
     tree.delete(215)
     tree.delete(335)
     tree.delete(777)
-    tree.show_plot()
     tree.delete(333)
+    tree.delete(512)
+    tree.delete(107)
     tree.show_plot()
-    

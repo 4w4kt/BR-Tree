@@ -44,7 +44,7 @@ class Tree234:
             if current.values[(path)%len(current.values)] == value:
                 return current.delete_brother(path)
             current = current.children[path]
-        if(current.delete_leaf(value) == -1):
+        if(current.delete_leaf(value, path) == -1):
             return False
 
 
