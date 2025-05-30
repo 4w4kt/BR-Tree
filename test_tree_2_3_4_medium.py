@@ -67,18 +67,100 @@ class test_tree(unittest.TestCase):
 
     """INICIO DE TESTS DE EXTRACCIONES"""
     #DELETE DE ÁRBOL CON MÁS DE 15 CLAVES-TRUE
-    def test_delete_no_vacio_(self):
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true(self):
         medianito = Tree234()
         for v in range(1, 16):
             medianito.insert(v)
 
-        
-        #self.assertEqual(medianito.height, 3, "La altura debería ser 3")
+        self.assertEqual(medianito.size, 15, "Debería ser 15")
+        for i in range(3, 8):
+            self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        self.assertEqual(medianito.size, 10, "Debería ser 10")
     
-    #DELETE DE ÁRBOL CON MÁS DE 3 CLAVES
-    #SIN TERMINAR
-    def test_delete_no_vacio_v2(self):
-        no_vacio = Tree234()
+    #DELETE DE ÁRBOL CON MÁS DE 15 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false(self):
+        medianito = Tree234()
+        for v in range(1, 16):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 15, "Debería ser 15")
+        for i in range(16, 21):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 15, "El número de elementos se debería mantener igual")
+
+    #DELETE DE ÁRBOL CON MÁS DE 20 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true_v2(self):
+        medianito = Tree234()
+        for v in range(1, 23):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 22, "Debería ser 22")
+        for i in range(10, 19):
+            self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        self.assertEqual(medianito.size, 13, "Debería ser 13")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 20 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false_v2(self):
+        medianito = Tree234()
+        for v in range(1, 23):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 22, "Debería ser 22")
+        for i in range(23, 28):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 22, "El número de elementos se debería mantener igual")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 30 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true_v3(self):
+        medianito = Tree234()
+        for v in range(1, 32):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 31, "Debería ser 31")
+        for i in range(22, 28):
+            self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        self.assertEqual(medianito.size, 25, "Debería ser 25")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 30 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false_v3(self):
+        medianito = Tree234()
+        for v in range(1, 32):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 31, "Debería ser 31")
+        for i in range(31, 40):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 31, "El número de elementos se debería mantener igual")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 50 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true_v4(self):
+        medianito = Tree234()
+        for v in range(1, 51):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 50, "Debería ser 50")
+        for i in range(40, 46):
+            self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        self.assertEqual(medianito.size, 44, "Debería ser 44")
+    
+    #DELETE DE ÁRBOL CON MÁS DE 50 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false_v4(self):
+        medianito = Tree234()
+        for v in range(1, 51):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 50, "Debería ser 50")
+        for i in range(51, 57):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 50, "El número de elementos se debería mantener igual")
     """FIN DE TESTS DE EXTRACCIONES"""
 
 

@@ -66,21 +66,34 @@ class test_tree(unittest.TestCase):
 
         
     """INICIO DE TESTS DE EXTRACCIONES"""
-    #EXTRACIÓN DE ÁRBOL VACIO
-    #SIN TERMINAR
-    def test_delete_vacio(self):
-        vacio = Tree234()
-        self.assertEqual(vacio.delete(5), None, "No debería haber un valor a eliminar")
+    #DELETE DE ÁRBOL CON MÁS DE 300 CLAVES-TRUE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_true(self):
+        extremista = Tree234()
+        for v in range(1, 302):
+            extremista.insert(v)
 
-    #DELETE DE ÁRBOL NO VACIO
-    #SIN TERMINAR
-    def test_delete_no_vacio(self):
-        no_vacio = Tree234()
+        self.assertEqual(extremista.size, 301, "Debería ser 301")
+        for i in range(150, 234):
+            self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        self.assertEqual(extremista.size, 218, "Debería ser 218")
     
-    #DELETE DE ÁRBOL CON MÁS DE 3 CLAVES
-    #SIN TERMINAR
-    def test_delete_no_vacio_v3(self):
-        no_vacio = Tree234()
+    #DELETE DE ÁRBOL CON MÁS DE 300 CLAVES-FALSE
+    #HAY QUE HACER COMPROBACIONES CON FIND
+    def test_delete_medium_false(self):
+        medianito = Tree234()
+        for v in range(1, 302):
+            medianito.insert(v)
+
+        self.assertEqual(medianito.size, 301, "Debería ser 301")
+        for i in range(16, 21):
+            self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        self.assertEqual(medianito.size, 15, "El número de elementos se debería mantener igual")
+
+
+
+
+
     """FIN DE TESTS DE EXTRACCIONES"""
 
 
