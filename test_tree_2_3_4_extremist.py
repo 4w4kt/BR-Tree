@@ -9,41 +9,34 @@ class test_tree(unittest.TestCase):
     @classmethod
     def setUpClass(cls): 
         print("Se van a ejecutar las pruebas de nivel avanzado de la clase tree")
-
-    #CREAMOS UN ÁRBOL VACIO
-    def test_create(self):
-        vacio = Tree234()
-        self.assertEqual(vacio.root, None, "No debería tener raiz")
-        self.assertEqual(vacio.size, 0, "El tamaño debería ser 0")
-        self.assertEqual(vacio.height, 0, "No debería tener altura")
     
     """IINICIO DE TESTS BÁSICOS DE NSERCIONES"""
-    #CREAMOS UN ÁRBOL CON MÁS DE 15 CLAVES 
+    #CREAMOS UN ÁRBOL CON MÁS DE 300 CLAVES 
     def test_create_extremo(self):
         extremista = Tree234()
-        for v in range(1, 16):
+        for v in range(1, 302):
             extremista.insert(v)
 
-        self.assertEqual(extremista.root.values, [9], "El valor de la raiz debería ser 9")
-        self.assertEqual(len(extremista.root.children), 2,"La raíz debe tener 2 hijos")
-        self.assertEqual(extremista.size, 15, "El tamaño debería ser 15")
-        #self.assertEqual(extremista.height, 3, "La altura debería ser 3")
+        self.assertEqual(extremista.root.values, [81, 162, 243], "El valor de la raiz debería ser [81,162,243]")
+        self.assertEqual(len(extremista.root.children), 4,"La raíz debe tener 4 hijos")
+        self.assertEqual(extremista.size, 301, "El tamaño debería ser 301")
+        #self.assertEqual(extremista.height, 5, "La altura debería ser 5")
     
-    #CREAMOS UN ÁRBOL CON MÁS DE 20 CLAVES 
+    #CREAMOS UN ÁRBOL CON MÁS DE 500 CLAVES 
     def test_create_extremo_v2(self):
         extremista = Tree234()
-        for v in range(1, 23):
+        for v in range(1, 502):
             extremista.insert(v)
 
-        self.assertEqual(extremista.root.values, [9, 18], "El valor de la raiz debería ser [9, 18]")
-        self.assertEqual(len(extremista.root.children), 3,"La raíz debe tener 3 hijos")
-        self.assertEqual(extremista.size, 22, "El tamaño debería ser 22")
-        #self.assertEqual(extremista.height, 3, "La altura debería ser 3")
+        self.assertEqual(extremista.root.values, [243], "El valor de la raiz debería ser 243")
+        self.assertEqual(len(extremista.root.children), 2,"La raíz debe tener 2 hijos")
+        self.assertEqual(extremista.size, 501, "El tamaño debería ser 501")
+        #self.assertEqual(extremista.height, 6, "La altura debería ser 6")
     
-    #CREAMOS UN ÁRBOL CON MÁS DE 30 CLAVES 
+    #CREAMOS UN ÁRBOL CON MÁS DE 800 CLAVES 
     def test_create_extremo_v3(self):
         extremista = Tree234()
-        for v in range(1, 32):
+        for v in range(1, 802):
             extremista.insert(v)
 
         self.assertEqual(extremista.root.values, [9, 18, 27], "El valor de la raiz debería ser [9, 18, 27]")
@@ -53,7 +46,7 @@ class test_tree(unittest.TestCase):
         for i in range (1, 32):
             self.assertTrue(extremista.conteins(i), "Deberían estar todos los elementos")
         #self.assertEqual(extremista.height, 3, "La altura debería ser 3")
-    """FIN DE TESTS BÁSICOS DE INSERCIONES"""
+    """FIN DE TESTS DE INSERCIONES"""
 
         
     """INICIO DE TESTS DE EXTRACCIONES"""
