@@ -18,13 +18,13 @@ class Node:
         for i in range(len(self.values)):
             if value < self.values[i]:
                 self.values.insert(i, value)
-                if len(self.values) == 4:
+                if len(self.values) >= 4:
                     return self.split()
                 return 0
             if value == self.values[i]:
                 return -1
         self.values.append(value)
-        if len(self.values) == 4:
+        if len(self.values) >= 4:
             return self.split()
         return 0
       
@@ -36,7 +36,10 @@ class Node:
         if self.parent == None:
             self.values = [self.values[middle]]
             self.children = [Node(left, self, self.children[0:3]), Node(right, self , self.children[3:])]
-
+            for child in self.children:
+                child.parent = self
+                for childre2 in child.children:
+                    childre2.parent = child
         else:
             self.parent.insert_brother(self, left, right)
         return 2
@@ -46,17 +49,56 @@ class Node:
             print(node.values)
             if node.values[2] < self.values[i]:
                 self.values.insert(i, node.values[2])
-                self.children[i] = Node (left, self)
-                self.children.insert(i+1, Node(right, self))
-                if len(self.values) == 4:
+                self.children[i] = Node (left, self,  node.children[0:3])
+                self.children.insert(i+1, Node(right, self, node.children[3:]))
+                if len(self.values) >= 4:
                     return self.split()
                 return
         self.values.append(node.values[2])
-        self.children[-1] = (Node(left, self))
-        self.children.append(Node(right, self))
-        if len(self.values) == 4:
+        self.children[-1] = (Node(left, self, node.children[0:3]))
+        self.children.append(Node(right, self, node.children[3:]))
+        if len(self.values) >= 4:
             return self.split()
         
+    
+    
+    def delete_leaf(self, value):
+        for i in range(len(self.values)):
+            if value == self.values[i]:
+                self.values.pop(i)
+                self.fill_gap()
+                return 0
+        return -1
+    
+    def fill_gap(self):
+        if self.is_leaf():
+            if len(self.values > 0):
+                return 0
+            self.parent.delete_brother(self.parent.values[0])
+    
+    def sucesor_simetrico(self, node, pop = 1):
+        while not node.is_leaf():
+            node = node.children[0]
+        if pop == 1:
+            node.values.pop(0)
+            if len(node.values) == 0:
+                node.parent.values[0] = (node.parent.sucesor_simetrico(node.children[1], 0))
+        return node.values[0]
+
+    def delete_brother(self,index):
+        self.values[index] = self.sucesor_simetrico(self.children[index+1], 1)
+        return 0
+
+
+    
+    
+
+    def delete_node(self, value):
+        for i in range(len(self.values)):
+            if value == self.values[i]:
+                self.values.pop(i)
+                return 0
+        return -1
     
         
     def __str__(self):
