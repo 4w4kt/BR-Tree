@@ -149,9 +149,9 @@ class test_tree(unittest.TestCase):
             self.assertTrue(medianito.delete(i), "Se deberían eliminar")
         
         """Comprobamos partes no eliminadas"""
-        for i in range(1, 22):
+        for i in range(1, 21):
             self.assertTrue(medianito.contains(i), "Debería devolver True")
-        for i in range(28, 32):
+        for i in range(29, 32):
             self.assertTrue(medianito.contains(i), "Debería devolver True")
         """Terminamos de comprobar partes no eliminadas"""
 

@@ -69,7 +69,7 @@ class test_tree(unittest.TestCase):
     #EXTRACIÓN DE ÁRBOL VACIO
     def test_delete_vacio(self):
         vacio = Tree234()
-        self.assertEqual(vacio.delete(5), None, "No debería haber un valor a eliminar")
+        self.assertEqual(vacio.delete(5), False, "No debería haber un valor a eliminar")
         self.assertEqual(vacio.root, None, "No debería quedar nada")
 
     #DELETE DE ÁRBOL NO VACIO-TRUE
