@@ -58,7 +58,7 @@ class TreeSet:
     #Retorna una shallow copy del TreeSet
     def clone(self):
         clon = TreeSet(self.tipo())
-        for element in self.conjunto:
+        for element in self.conjunto.inorder():
             clon.add(element)
         return clon
 
@@ -203,3 +203,8 @@ class TreeSet:
         print("In-orden inverso:")
         for val in self.conjunto.inverse():
             print(val, end=" ")
+        
+    def __eq__(self, other):
+        if other == None:
+            return False
+        return self.conjunto == other.conjunto 

@@ -113,6 +113,27 @@ class _2_3_4_test(unittest.TestCase):
         self.assertEqual(comprobador.size(), 39, "Debería haber 39 elementos")
         comprobador.clear()
         self.assertEqual(comprobador.size(), 0, "Debería haber 0 elementos")
+    
+    #COMPROBACIÓN DEL CLONE FALLA
+    def test_clonar(self):
+        original = TreeSet(1)
+        original.add(1)
+        original.add(2)
+        original.add(3)
+        clon = original.clone()
+        self.assertEqual(original, clon, "Deberían ser idénticos")
+    
+    def test_clonar(self):
+        original = TreeSet(1)
+        for i in range(1, 40):
+            original.add(i)
+        clon = original.clone()
+        self.assertEqual(original, clon, "Deberían ser idénticos")
+    
+    
+
+        
+
 
 
 
