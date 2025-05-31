@@ -107,9 +107,9 @@ class TreeSet:
     #Retorna el elemento más pequeño de este conjunto estrictamente mayor que el elemento dado, o nulo si no existe dicho elemento
     def higher(self, num):
         found = self.ceiling(num)
-        == num:
+        if found is None or found == num:
             return None
-        return None if self.floor(num) == num else self.floor(num)
+        return found
 
     #Devuelve true si el arbol no tiene elementos
     def isEmpty(self):
@@ -121,24 +121,45 @@ class TreeSet:
 
     #Retorna el ultimo elemento (el más alto) del conjunto
     def last(self):
-        return self.conjunto.max()
+        if self.size == 0:
+            return None
+        if self.max:
+            return self.max
+
+        max = next(self.conjunto.inverse())
+        self.max = max
+        return max
 
     #Devuelve el elemento más grande de este conjunto estrictamente menor que el elemento dado, o null si no existe dicho elemento.
-    def lower(self):
-        return -1
-
+    def lower(self, num):
+        past = self.floor(num)
+        return None if past == num else past
+    
     #Recupera y elimina el primer elemento (el más bajo) o devuelve nulo si el conjunto está vacío.
     def pollFirst(self):
         return -1
 
     #Recupera y elimina el último elemento (el más alto), o devuelve nulo si este conjunto está vacío.
     def pollLast(self):
-        return -1
+        if self.size == 0:
+            return None
+        if self.max:
+            self.conjunto.delete(self.max)
+            max = self.max
+            self.max = None
+            return max
+        
+        max = next(self.conjunto.inverse())
+        self.conjunto.delete(max)
+        return max
 
     #Elimina el elemento especificado de este conjunto si está presente.
     def remove(self, num):
-        return -1
-
+        if self.conjunto.delete(num):
+            self.size -= 1
+            return True
+        return False
+    
     #Devuelve el número de elementos de este conjunto (su cardinalidad).
     def size(self):
-        return -1
+        return self.size
