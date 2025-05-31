@@ -10,7 +10,7 @@ class TreeSet:
     def add(self, num):
         return self.conjunto.insert(num)
     
-    #Aade un grupo de elementos al arbol. Devuelve un booleano
+    #Añade un grupo de elementos al arbol. Devuelve un booleano
     def addAll(self, collection):
         size = self.conjunto.size
         for element in collection:
@@ -24,7 +24,7 @@ class TreeSet:
             return None
         return num
     
-    #Elmimina todos los elementos del cojunto
+    #Elmimina los elementos del conjunto
     def clear(self):
         self.conjunto = Tree()
         return True
@@ -35,9 +35,6 @@ class TreeSet:
         for element in self.conjunto:
             arbol.add(element)
         return arbol
-        
-
-    
 
     #Retorna true si el conjunto contiene el numero especificado
     def contains(self, num):
@@ -55,7 +52,7 @@ class TreeSet:
     def floor(self, num):
         return -1
 
-    #Retorna el menor elemento del arbol mayor o igual al elemento pasado por parámetro o NULL si no se ha encontrado
+    #Retorna el elemento más pequeño de este conjunto estrictamente mayor que el elemento dado, o nulo si no exise dicho elemento
     def higher(self, num):
         return -1
 
@@ -67,27 +64,26 @@ class TreeSet:
     def iterator(self):
         return self.cojunto.iterator()
 
-    #Retorna el ultimo (mayor) elemento en el arbol, actualmente
+    #Retorna el ultimo elemento (el más alto) del conjunto
     def last(self):
         return self.conjunto.max()
 
-    #Devuelve el mayor elemento en el arbol menor al elemento pasado por parametro, o nulo si no existe dicho elemento.
+    #Devuelve el elemento más grande de este conjunto estrictamente menor que el elemento dado, o null si no existe dicho elemento.
     def lower(self):
         return -1
 
-    #Recupera y elimina el primer elemento (el mas bajo) o devuelve nulo si este conjunto está vacío.
+    #Recupera y elimina el primer elemento (el más bajo) o devuelve nulo si el conjunto está vacío.
     def pollFirst(self):
         return -1
 
-    
-    #Recupera y elimina el ultimo elemento (el mas grande) o devuelve nulo si el conjuntoestá vacío
+    #Recupera y elimina el último elemento (el más alto), o devuelve nulo si este conjunto está vacío.
     def pollLast(self):
         return -1
 
-    #Elimina el elemento pasado por parámetro
+    #Elimina el elemento especificado de este conjunto si está presente.
     def remove(self, num):
         return -1
 
-    #Devuelve la cantidad de elementos en el treeset
+    #Devuelve el número de elementos de este conjunto (su cardinalidad).
     def size(self):
         return -1
