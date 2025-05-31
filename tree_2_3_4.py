@@ -1,7 +1,6 @@
 # tree_2_3_4.py
 from node_2_3_4 import *
 import matplotlib.pyplot as plt
-import numpy as np
 
 
 class Tree234:
@@ -35,6 +34,9 @@ class Tree234:
         if self.root is None:
             return False
         if self.delete_node(value):
+            if self.root.values == [] and len(self.root.children) == 1:
+                self.root = self.root.children[0]
+                self.root.parent = None
             self.size -= 1
             return True
         return False

@@ -163,3 +163,29 @@ class TreeSet:
     #Devuelve el número de elementos de este conjunto (su cardinalidad).
     def size(self):
         return self.size
+    
+    def plot(self):
+        self.conjunto.show_plot()
+        
+    def tipo(self):
+        return self.tipo
+    
+    def print_Inorder(self):
+        print("In-orden:")
+        for val in self.conjunto.inorder():
+            print(val, end=" ")
+
+    def print_Preorder(self):
+        print("Pre-orden:")
+        for val in self.conjunto.preorder():
+            print(val, end=" ")
+    
+    def print_Postorder(self):
+        print("Pos-orden:")
+        for val in self.conjunto.postorder():
+            print(val, end=" ")
+
+    def print_Inorder_reverse(self):
+        print("In-orden inverso:")
+        for val in self.conjunto.inverse():
+            print(val, end=" ")

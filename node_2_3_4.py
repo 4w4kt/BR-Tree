@@ -81,7 +81,7 @@ class Node:
             if len(self.values) > 0:
                 return True
             #derecha
-            if self.parent == None: 
+            if self.parent == None:
                 return True
             if index < len(self.parent.values):
                 self.values.append(self.parent.values[index])
@@ -95,7 +95,7 @@ class Node:
         if len(self.values) > 0:
             return True
         #Por si acaso
-        if self.parent == None: 
+        if self.parent == None:
             return True
         #Fin por si acaso
         value = self.parent.values.pop(index)
