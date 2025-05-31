@@ -67,7 +67,6 @@ class test_tree(unittest.TestCase):
         
     """INICIO DE TESTS DE EXTRACCIONES"""
     #DELETE DE ÁRBOL CON MÁS DE 300 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_true(self):
         extremista = Tree234()
         for v in range(1, 302):
@@ -76,10 +75,18 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 301, "Debería ser 301")
         for i in range(150, 234):
             self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 150):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        for i in range(234, 302):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
+
         self.assertEqual(extremista.size, 218, "Debería ser 218")
     
     #DELETE DE ÁRBOL CON MÁS DE 300 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_false(self):
         extremista = Tree234()
         for v in range(1, 302):
@@ -88,10 +95,15 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 301, "Debería ser 301")
         for i in range(302, 400):
             self.assertFalse(extremista.delete(i), "No se deberían eliminar")
+
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 302):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+
         self.assertEqual(extremista.size, 301, "El número de elementos se debería mantener igual")
 
     #DELETE DE ÁRBOL CON MÁS DE 500 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_true_v2(self):
         extremista = Tree234()
         for v in range(1, 502):
@@ -100,10 +112,17 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 501, "Debería ser 501")
         for i in range(120, 400):
             self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 120):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        for i in range(400, 502):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(extremista.size, 220, "Debería ser 220")
 
     #DELETE DE ÁRBOL CON MÁS DE 500 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_false_v2(self):
         extremista = Tree234()
         for v in range(1, 502):
@@ -112,10 +131,15 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 501, "Debería ser 501")
         for i in range(502, 700):
             self.assertFalse(extremista.delete(i), "No se deberían eliminar")
+        
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 502):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+
         self.assertEqual(extremista.size, 501, "El número de elementos se debería mantener igual")
 
     #DELETE DE ÁRBOL CON MÁS DE 800 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extrremo_true_v3(self):
         extremista = Tree234()
         for v in range(1, 802):
@@ -124,10 +148,17 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 801, "Debería ser 801")
         for i in range(400, 700):
             self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 400):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        for i in range(700, 802):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(extremista.size, 501, "Debería ser 501")
     
     #DELETE DE ÁRBOL CON MÁS DE 800 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_false_v3(self):
         extremista = Tree234()
         for v in range(1, 802):
@@ -136,10 +167,15 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 801, "Debería ser 801")
         for i in range(802, 900):
             self.assertFalse(extremista.delete(i), "No se deberían eliminar")
+        
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 802):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+
         self.assertEqual(extremista.size, 801, "El número de elementos se debería mantener igual")
 
     #DELETE DE ÁRBOL CON MÁS DE 1000 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_true_v4(self):
         extremista = Tree234()
         for v in range(1, 1002):
@@ -148,10 +184,17 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 1001, "Debería ser 1001")
         for i in range(200, 900):
             self.assertTrue(extremista.delete(i), "Se deberían eliminar")
+        
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 200):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        for i in range(900, 1002):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(extremista.size, 301, "Debería ser 301")
     
     #DELETE DE ÁRBOL CON MÁS DE 1000 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_extremo_false_v4(self):
         extremista = Tree234()
         for v in range(1, 1002):
@@ -160,6 +203,11 @@ class test_tree(unittest.TestCase):
         self.assertEqual(extremista.size, 1001, "Debería ser 1001")
         for i in range(1002, 1100):
             self.assertFalse(extremista.delete(i), "No se deberían eliminar")
+        
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 1002):
+            self.assertTrue(extremista.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
         self.assertEqual(extremista.size, 1001, "El número de elementos se debería mantener igual")
     """FIN DE TESTS DE EXTRACCIONES"""
 
