@@ -177,7 +177,6 @@ class _2_3_4_test(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    # unittest.main()
 
     tree = Tree234()
     tree.insert(2)
