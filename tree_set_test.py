@@ -23,8 +23,6 @@ class _2_3_4_test(unittest.TestCase):
         self.tree.insert(2)
         self.tree.insert(3)
         self.tree.insert(1)
-        self.tree.show_plot()
-
     @classmethod
     def tearDownClass(cls):
         print("Han finalizado las pruebas de la clase tree_set")
@@ -43,7 +41,6 @@ if __name__ == '__main__':
     tree.insert(500)
     tree.insert(512)
     tree.insert(100)
-    tree.show_plot()
     tree.insert(33)
     tree.insert(31)
     tree.insert(90)
@@ -101,7 +98,6 @@ if __name__ == '__main__':
     tree.insert(7)
     tree.insert(9)
     tree.insert(777)
-    tree.show_plot()
     tree.delete(215)
     tree.delete(335)
     tree.delete(777)
@@ -117,8 +113,11 @@ if __name__ == '__main__':
     tree.delete(82)
     tree.delete(33)
     tree.delete(39)
-    tree.show_plot()
     tree.delete(15)
-    tree.delete(500)
+    tree.delete(6)
     tree.show_plot()
+    tree.delete(2)
+    tree.show_plot()
+
+        
     

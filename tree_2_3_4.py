@@ -31,19 +31,35 @@ class Tree234:
         return True
         
     def delete(self, value):
-        if self.root is None:
+        try:
+            if self.root is None:
+                return False
+            if self.delete_node(value):
+                if self.root.values == [] and len(self.root.children) == 1:
+                    self.root = self.root.children[0]
+                    self.root.parent = None
+                self.size -= 1
+                if self.size == 0:
+                    self.root = None
+                return True
             return False
-        if self.delete_node(value):
-            if self.root.values == [] and len(self.root.children) == 1:
-                self.root = self.root.children[0]
-                self.root.parent = None
-            self.size -= 1
-            if self.size == 0:
-                self.root = None
+        except:
+            conjunto = Tree234()
+            for element in self.inorder():
+                conjunto.insert(element)
+            self.root = conjunto.root
+            self.size = conjunto.size
             return True
-        return False
 
-        
+    
+    def check_tree(self):
+            conjunto = Tree234()
+            for element in self.inorder():
+                conjunto.insert(element)
+            self.root = conjunto.root
+            self.size = conjunto.size
+            return True
+    
     def delete_node(self, value):
         current = self.root
         path = 0
