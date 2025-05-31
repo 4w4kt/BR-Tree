@@ -74,12 +74,12 @@ class Node:
             if value == self.values[i]:
                 self.values.pop(i)
                 return self.fill_gap(index)
-        return -1
+        return False
     
     def fill_gap(self, index):
         if self.is_leaf():
             if len(self.values) > 0:
-                return 0
+                return True
             #derecha
             if index < len(self.parent.values):
                 self.values.append(self.parent.values[index])
@@ -91,7 +91,7 @@ class Node:
          
         #not leaf
         if len(self.values) > 0:
-            return 0
+            return True
         
         value = self.parent.values.pop(index)
         self.values.insert(index, value)

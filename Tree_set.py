@@ -106,7 +106,9 @@ class TreeSet:
 
     #Retorna el elemento más pequeño de este conjunto estrictamente mayor que el elemento dado, o nulo si no existe dicho elemento
     def higher(self, num):
-        
+        found = self.ceiling(num)
+        == num:
+            return None
         return None if self.floor(num) == num else self.floor(num)
 
     #Devuelve true si el arbol no tiene elementos
