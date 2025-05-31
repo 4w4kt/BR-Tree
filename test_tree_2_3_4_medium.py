@@ -139,7 +139,6 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 22, "El número de elementos se debería mantener igual")
     
     #DELETE DE ÁRBOL CON MÁS DE 30 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_true_v3(self):
         medianito = Tree234()
         for v in range(1, 32):
@@ -148,10 +147,17 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 31, "Debería ser 31")
         for i in range(22, 28):
             self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 22):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        for i in range(28, 32):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(medianito.size, 25, "Debería ser 25")
     
     #DELETE DE ÁRBOL CON MÁS DE 30 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_false_v3(self):
         medianito = Tree234()
         for v in range(1, 32):
@@ -160,22 +166,34 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 31, "Debería ser 31")
         for i in range(32, 40):
             self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 32):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+
         self.assertEqual(medianito.size, 31, "El número de elementos se debería mantener igual")
     
     #DELETE DE ÁRBOL CON MÁS DE 50 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_true_v4(self):
         medianito = Tree234()
         for v in range(1, 51):
             medianito.insert(v)
 
         self.assertEqual(medianito.size, 50, "Debería ser 50")
-        for i in range(40, 46):
+        for i in range(12, 46):
             self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 12):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        for i in range(46, 51):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(medianito.size, 44, "Debería ser 44")
     
     #DELETE DE ÁRBOL CON MÁS DE 50 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_false_v4(self):
         medianito = Tree234()
         for v in range(1, 51):
@@ -184,6 +202,12 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 50, "Debería ser 50")
         for i in range(51, 57):
             self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 51):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+
         self.assertEqual(medianito.size, 50, "El número de elementos se debería mantener igual")
     """FIN DE TESTS DE EXTRACCIONES"""
 
