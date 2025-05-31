@@ -95,6 +95,7 @@ class _2_3_4_test(unittest.TestCase):
         self.assertEqual(buscador.contains(3), True, "Debería ser True")
         self.assertEqual(buscador.contains(5), True, "Debería ser True")
         self.assertEqual(buscador.contains(7), True, "Debería ser True")
+        #buscador.plot()
     
     def test_busqueda_v2(self):
         buscador = TreeSet(int)
@@ -102,7 +103,32 @@ class _2_3_4_test(unittest.TestCase):
             buscador.add(i)
         for i in range(1, 40):
             self.assertTrue(buscador.contains(i),  "Debería ser True")
+        #buscador.plot()
     """FIN DE TEST DE BÚSQUEDAS BÁSICAS"""
+
+
+    """TEST DE EXTRACCIONES BÁSICAS"""
+    def test_extraccion(self):
+        extractor = TreeSet(int)
+        extractor.add(5)
+        extractor.add(3)
+        extractor.add(7)
+        #extractor.plot()
+        self.assertEqual(extractor.remove(3), True, "Debería ser True")
+        self.assertEqual(extractor.remove(5), True, "Debería ser True")
+        self.assertEqual(extractor.remove(7), True, "Debería ser True")
+        self.assertEqual(extractor.remove(7), False, "Debería ser False")
+        #extractor.plot()
+    
+    def test_extraccion_v2(self):
+        extractor = TreeSet(int)
+        for i in range(1, 800):
+            extractor.add(i)
+        #extractor.plot()
+        for i in range(1, 800):
+            self.assertEqual(extractor.remove(i), True, "Debería ser True")
+        #extractor.plot()
+    """FIN DE TEST DE EXTRACCIONES BÁSICAS"""
 
 
     """TEST DE MÉTODOS BÁSICOS"""
