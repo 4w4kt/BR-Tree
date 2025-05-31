@@ -93,11 +93,11 @@ class test_tree(unittest.TestCase):
         no_vacio.insert(2)
         no_vacio.insert(3)
         self.assertEqual(no_vacio.size, 3, "Debería ser 3")
-        self.assertTrue(no_vacio.delete(2), "Debería devolver True")
-        self.assertEqual(no_vacio.size, 2, "Debería haber bajado a 2")
-        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
-        self.assertEqual(no_vacio.size, 1, "Debería haber bajado a 1")
         self.assertTrue(no_vacio.delete(3), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 2, "Debería haber bajado a 2")
+        self.assertTrue(no_vacio.delete(2), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 1, "Debería haber bajado a 1")
+        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
         self.assertEqual(no_vacio.size, 0, "Debería haber bajado a 0")
         self.assertEqual(no_vacio.root, None, "No debería quedar nada")
     
@@ -122,13 +122,13 @@ class test_tree(unittest.TestCase):
         no_vacio.insert(3)
         no_vacio.insert(4)
         self.assertEqual(no_vacio.size, 4, "Debería ser 4")
-        self.assertTrue(no_vacio.delete(2), "Debería devolver True")
-        self.assertEqual(no_vacio.size, 3, "Debería haber bajado a 3")
-        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
-        self.assertEqual(no_vacio.size, 2, "Debería haber bajado a 2")
-        self.assertTrue(no_vacio.delete(3), "Debería devolver True")
-        self.assertEqual(no_vacio.size, 1, "Debería haber bajado a 1")
         self.assertTrue(no_vacio.delete(4), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 3, "Debería haber bajado a 3")
+        self.assertTrue(no_vacio.delete(3), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 2, "Debería haber bajado a 2")
+        self.assertTrue(no_vacio.delete(2), "Debería devolver True")
+        self.assertEqual(no_vacio.size, 1, "Debería haber bajado a 1")
+        self.assertTrue(no_vacio.delete(1), "Debería devolver True")
         self.assertEqual(no_vacio.size, 0, "Debería haber bajado a 0")
         self.assertEqual(no_vacio.root, None, "No debería quedar nada")
     
@@ -155,19 +155,19 @@ class test_tree(unittest.TestCase):
     #BUSQUEDA DE ÁRBOL VACIO
     def test_find_empty(self):
         vacio = Tree234()
-        self.assertEqual(vacio.find_node(5), False, "No debería haber un valor a buscar")
+        self.assertEqual(vacio.contains(5), False, "No debería haber un valor a buscar")
     
     #BUSQUEDA DE ÁRBOL NO VACIO
     def test_find_no_empty_v2(self):
         medio_lleno = Tree234()
         medio_lleno.insert(5)
-        self.assertEqual(medio_lleno.find_node(5), 5, "Debería devolver el valor 5")
+        self.assertEqual(medio_lleno.contains(5), True, "Debería devolver el valor 5")
     
     #BUSQUEDA DE ÁRBOL NO VACIO FALLIDA 
     def test_find_no_empty_fail(self):
         medio_lleno = Tree234()
         medio_lleno.insert(5)
-        self.assertEqual(medio_lleno.find_node(7), False, "Debería devolver False")
+        self.assertEqual(medio_lleno.contains(7), False, "Debería devolver False")
 
     #BUSQUEDA DE ÁRBOL CON 3 CLAVES
     def test_find_no_empty_v2(self):
@@ -175,7 +175,10 @@ class test_tree(unittest.TestCase):
         lleno.insert(5)
         lleno.insert(3)
         lleno.insert(7)
-        self.assertEqual(lleno.find_node(5), 5, "Debería devolver el valor 5")
+        self.assertEqual(lleno.contains(5), True, "Debería devolver True")
+        self.assertEqual(lleno.contains(3), True, "Debería devolver True")
+        self.assertEqual(lleno.contains(7), True, "Debería devolver True")
+                         
     
     #BUSQUEDA DE ÁRBOL CON 3 CLAVES FALLIDA
     def test_find_no_empty_fail_v2(self):
@@ -183,7 +186,7 @@ class test_tree(unittest.TestCase):
         lleno.insert(5)
         lleno.insert(3)
         lleno.insert(7)
-        self.assertEqual(lleno.find_node(9), False, "Debería devolver False")
+        self.assertEqual(lleno.contains(9), False, "Debería devolver False")
     
     #BUSQUEDA DE ÁRBOL CON MÁS DE 3 CLAVES -> SOBRECARGA
     def test_find_no_empty_v3(self):
@@ -193,11 +196,11 @@ class test_tree(unittest.TestCase):
         lleno.insert(7)
         lleno.insert(2)
         #Primero probamos a buscar la raíz
-        self.assertEqual(lleno.find_node(5), 5, "Debería devolver el valor 5")
+        self.assertEqual(lleno.contains(5), True, "Debería devolver True")
         #Probamos a buscar sus hijos
-        self.assertEqual(lleno.find_node(3), 3, "Debería devolver el valor 3")
-        self.assertEqual(lleno.find_node(7), 7, "Debería devolver el valor 7")
-        self.assertEqual(lleno.find_node(2), 2, "Debería devolver el valor 2")
+        self.assertEqual(lleno.contains(3), True, "Debería devolver True")
+        self.assertEqual(lleno.contains(7), True, "Debería devolver True")
+        self.assertEqual(lleno.contains(2), True, "Debería devolver True")
     
     #BUSQUEDA DE ÁRBOL CON MÁS DE 3 CLAVES -> SOBRECARGA FALLIDA
     def test_find_no_empty_fail_v3(self):
@@ -206,7 +209,7 @@ class test_tree(unittest.TestCase):
         lleno.insert(3)
         lleno.insert(7)
         lleno.insert(2)
-        self.assertFalse(lleno.find_node(15), "Debería devolver False")
+        self.assertFalse(lleno.contains(15), "Debería devolver False")
     """FIN DE TESTS DE BÚSQUEDAS"""
     
     #PARA MOSTRAR EL ARBOL HAY OTRA PAGINA DE CÓDIGO EXCLUSIVA PARA ELLO

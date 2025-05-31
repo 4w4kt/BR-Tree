@@ -67,7 +67,6 @@ class test_tree(unittest.TestCase):
 
     """INICIO DE TESTS DE EXTRACCIONES"""
     #DELETE DE ÁRBOL CON MÁS DE 15 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_true(self):
         medianito = Tree234()
         for v in range(1, 16):
@@ -76,10 +75,17 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 15, "Debería ser 15")
         for i in range(3, 8):
             self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+        
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 3):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        for i in range(8, 16):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(medianito.size, 10, "Debería ser 10")
     
     #DELETE DE ÁRBOL CON MÁS DE 15 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_false(self):
         medianito = Tree234()
         for v in range(1, 16):
@@ -88,10 +94,15 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 15, "Debería ser 15")
         for i in range(16, 21):
             self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 16):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+        
         self.assertEqual(medianito.size, 15, "El número de elementos se debería mantener igual")
 
     #DELETE DE ÁRBOL CON MÁS DE 20 CLAVES-TRUE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_true_v2(self):
         medianito = Tree234()
         for v in range(1, 23):
@@ -100,10 +111,17 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 22, "Debería ser 22")
         for i in range(10, 19):
             self.assertTrue(medianito.delete(i), "Se deberían eliminar")
+
+        """Comprobamos partes no eliminadas"""
+        for i in range(1, 10):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        for i in range(19, 23):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar partes no eliminadas"""
+
         self.assertEqual(medianito.size, 13, "Debería ser 13")
     
     #DELETE DE ÁRBOL CON MÁS DE 20 CLAVES-FALSE
-    #HAY QUE HACER COMPROBACIONES CON FIND
     def test_delete_medium_false_v2(self):
         medianito = Tree234()
         for v in range(1, 23):
@@ -112,6 +130,12 @@ class test_tree(unittest.TestCase):
         self.assertEqual(medianito.size, 22, "Debería ser 22")
         for i in range(23, 28):
             self.assertFalse(medianito.delete(i), "No se deberían eliminar")
+        
+        """Comprobamos que no se ha eliminado nada"""
+        for i in range(1, 23):
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
+        """Terminamos de comprobar que no se ha eliminado nada"""
+
         self.assertEqual(medianito.size, 22, "El número de elementos se debería mantener igual")
     
     #DELETE DE ÁRBOL CON MÁS DE 30 CLAVES-TRUE
@@ -134,7 +158,7 @@ class test_tree(unittest.TestCase):
             medianito.insert(v)
 
         self.assertEqual(medianito.size, 31, "Debería ser 31")
-        for i in range(31, 40):
+        for i in range(32, 40):
             self.assertFalse(medianito.delete(i), "No se deberían eliminar")
         self.assertEqual(medianito.size, 31, "El número de elementos se debería mantener igual")
     
@@ -172,7 +196,7 @@ class test_tree(unittest.TestCase):
             medianito.insert(v)
         
         for i in range(1, 16):
-            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
 
     #BUSQUEDA DE ÁRBOL CON MÁS DE 15 CLAVES FALLIDA
     def test_find_medium_fail(self):
@@ -180,9 +204,9 @@ class test_tree(unittest.TestCase):
         for v in range(1, 16):
             medianito.insert(v)
         
-        self.assertFalse(medianito.find_node(78), "Debería devolver False")
-        self.assertFalse(medianito.find_node(56), "Debería devolver False")
-        self.assertFalse(medianito.find_node(38), "Debería devolver False")
+        self.assertFalse(medianito.contains(78), "Debería devolver False")
+        self.assertFalse(medianito.contains(56), "Debería devolver False")
+        self.assertFalse(medianito.contains(38), "Debería devolver False")
     
     #BUSQUEDA DE ÁRBOL CON MÁS DE 20 CLAVES
     def test_find_medium_v2(self):
@@ -191,7 +215,7 @@ class test_tree(unittest.TestCase):
             medianito.insert(v)
         
         for i in range(1, 23):
-            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
 
     #BUSQUEDA DE ÁRBOL CON MÁS DE 20 CLAVES FALLIDA
     def test_find_medium_fail_v2(self):
@@ -199,9 +223,9 @@ class test_tree(unittest.TestCase):
         for v in range(1, 23):
             medianito.insert(v)
         
-        self.assertFalse(medianito.find_node(45), "Debería devolver False")
-        self.assertFalse(medianito.find_node(24), "Debería devolver False")
-        self.assertFalse(medianito.find_node(0), "Debería devolver False")
+        self.assertFalse(medianito.contains(45), "Debería devolver False")
+        self.assertFalse(medianito.contains(24), "Debería devolver False")
+        self.assertFalse(medianito.contains(0), "Debería devolver False")
 
     #BUSQUEDA DE ÁRBOL CON MÁS DE 30 CLAVES
     def test_find_medium_v3(self):
@@ -210,7 +234,7 @@ class test_tree(unittest.TestCase):
             medianito.insert(v)
         
         for i in range(1, 32):
-            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
     
     #BUSQUEDA DE ÁRBOL CON MÁS DE 30 CLAVES FALLIDA
     def test_find_medium_fail_v3(self):
@@ -218,9 +242,9 @@ class test_tree(unittest.TestCase):
         for v in range(1, 32):
             medianito.insert(v)
         
-        self.assertFalse(medianito.find_node(45), "Debería devolver False")
-        self.assertFalse(medianito.find_node(32), "Debería devolver False")
-        self.assertFalse(medianito.find_node(39), "Debería devolver False")
+        self.assertFalse(medianito.contains(45), "Debería devolver False")
+        self.assertFalse(medianito.contains(32), "Debería devolver False")
+        self.assertFalse(medianito.contains(39), "Debería devolver False")
     
     #BUSQUEDA DE ÁRBOL CON MÁS DE 50 CLAVES
     def test_find_medium_v4(self):
@@ -229,7 +253,7 @@ class test_tree(unittest.TestCase):
             medianito.insert(v)
         
         for i in range(1, 51):
-            self.assertEqual(medianito.find_node(i), i, "Debería devolver el valor: " + str(i))
+            self.assertTrue(medianito.contains(i), "Debería devolver True")
 
     #BUSQUEDA DE ÁRBOL CON MÁS DE 50 CLAVES FALLIDA
     def test_find_medium_fail_v4(self):
@@ -237,9 +261,9 @@ class test_tree(unittest.TestCase):
         for v in range(1, 51):
             medianito.insert(v)
         
-        self.assertFalse(medianito.find_node(51), "Debería devolver False")
-        self.assertFalse(medianito.find_node(60), "Debería devolver False")
-        self.assertFalse(medianito.find_node(90), "Debería devolver False")
+        self.assertFalse(medianito.contains(51), "Debería devolver False")
+        self.assertFalse(medianito.contains(60), "Debería devolver False")
+        self.assertFalse(medianito.contains(90), "Debería devolver False")
     """FIN DE TESTS DE BÚSQUEDAS"""
     
     #PARA MOSTRAR EL ARBOL HAY OTRA PAGINA DE CÓDIGO EXCLUSIVA PARA ELLO

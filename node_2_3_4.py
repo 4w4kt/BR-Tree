@@ -81,6 +81,8 @@ class Node:
             if len(self.values) > 0:
                 return True
             #derecha
+            if self.parent == None: 
+                return True
             if index < len(self.parent.values):
                 self.values.append(self.parent.values[index])
                 return self.parent.sucesor_simetrico(index)
@@ -92,7 +94,10 @@ class Node:
         #not leaf
         if len(self.values) > 0:
             return True
-        
+        #Por si acaso
+        if self.parent == None: 
+            return True
+        #Fin por si acaso
         value = self.parent.values.pop(index)
         self.values.insert(index, value)
         self.parent.values.insert(index, self.parent.children[index].values.pop())
