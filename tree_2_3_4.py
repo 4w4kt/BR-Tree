@@ -33,8 +33,11 @@ class Tree234:
         
     def delete(self, value):
         if self.root is None:
-            return
-        return self.delete_node(value)
+            return False
+        if self.delete_node(value):
+            self.size -= 1
+            return True
+        return False
 
         
     def delete_node(self, value):
