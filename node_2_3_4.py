@@ -86,18 +86,23 @@ class Node:
                 self.values.append(self.parent.values[index])
                 return self.parent.sucesor_simetrico(index)
             value = self.parent.values.pop()
-            self.parent.children[-2].values.append(value)
-            self.parent.children.pop()
+            self.parent.children[index-1].values.append(value)
+            self.parent.children.pop(index)
             return self.parent.fill_gap(self.parent.find_path(value))
+         
         #not leaf
         if len(self.values) > 0:
             return 0
+        
         value = self.parent.values.pop(index)
-        self.values.append(value)
+        self.values.insert(index, value)
         self.parent.values.insert(index, self.parent.children[index].values.pop())
+#       self.parent.sucesor_simetrico(index)
         self.children.insert(index-1, self.parent.children[index].children.pop())
         for node in self.children:
             node.parent = self
+        if len(self.values) == 0:
+            self.fill_gap(self.sucesor_simetrico(0))
         return self.parent.fill_gap(self.parent.find_path(value))
 
     def sucesor_simetrico(self, index, pop = 1):
@@ -105,7 +110,10 @@ class Node:
         while not node.is_leaf():
             node = node.children[0]
         if pop == 1 and len(node.values) > 1:
-            self.values[index] = node.values.pop(0)
+            if len(self.values) > index:
+                self.values[index] = node.values.pop(0)
+            else:
+                self.values.append(node.values.pop(0))
             return True
         
         old_value = node
