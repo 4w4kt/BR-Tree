@@ -42,7 +42,7 @@ class Tree234:
         while not current.is_leaf():
             path = current.find_path(value)
             if current.values[(path)%len(current.values)] == value:
-                return current.delete_brother(path)
+                return current.sucesor_simetrico(path)
             current = current.children[path]
         if(current.delete_leaf(value, path) == -1):
             return False

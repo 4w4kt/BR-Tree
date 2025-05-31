@@ -29,7 +29,7 @@ class _2_3_4_test(unittest.TestCase):
         print("Han finalizado las pruebas de la clase tree_set")
 
 if __name__ == '__main__':
-    unittest.main()
+    # unittest.main()
 
     tree = Tree234()
     tree.insert(2)
@@ -79,4 +79,12 @@ if __name__ == '__main__':
     tree.delete(333)
     tree.delete(512)
     tree.delete(107)
+    tree.delete(12)
+    tree.delete(18)
+    tree.delete(19)
+    tree.delete(3)
+    tree.delete(1)
+    tree.delete(0)
+    tree.show_plot()
+    tree.delete(334)
     tree.show_plot()

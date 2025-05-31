@@ -84,7 +84,7 @@ class Node:
             #derecha
             if index < len(self.parent.values):
                 self.values.append(self.parent.values[index])
-                return self.parent.delete_brother(index)
+                return self.parent.sucesor_simetrico(index)
             value = self.parent.values.pop()
             self.parent.children[-2].values.append(value)
             self.parent.children.pop()
@@ -92,25 +92,36 @@ class Node:
         #not leaf
         if len(self.values) > 0:
             return 0
-        value = self.parent.values.pop()
+        value = self.parent.values.pop(index)
         self.values.append(value)
         self.parent.values.insert(index, self.parent.children[index].values.pop())
         self.children.insert(index-1, self.parent.children[index].children.pop())
         for node in self.children:
             node.parent = self
         return self.parent.fill_gap(self.parent.find_path(value))
-    
-    def sucesor_simetrico(self, node, pop = 1):
+
+    def sucesor_simetrico(self, index, pop = 1):
+        node = self.children[index+1]
         while not node.is_leaf():
             node = node.children[0]
+        if pop == 1 and len(node.values) > 1:
+            self.values[index] = node.values.pop(0)
+            return True
+        
+        old_value = node
+        node = self.children[index]
+        while not node.is_leaf():
+            node = node.children[-1]
+        
+        if pop == 1 and len(node.values) > 1:
+            self.values[index] = node.values.pop()
+            return True
+        
         if pop == 1:
-            result = node.values.pop(0)
-            node.fill_gap(node.values[0])
-        return result
-
-    def delete_brother(self,index):
-        self.values[index] = self.sucesor_simetrico(self.children[index+1], 1)
-        return 0
+            self.children[index].values.append(old_value.values.pop())
+            old_value.parent.children.pop()
+            value = self.values.pop(index)
+            return self.fill_gap(self.find_path(value))
 
 
     
