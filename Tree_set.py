@@ -32,21 +32,16 @@ class TreeSet:
 
     #Devuelve el elemento más pequeño de este conjunto que sea mayor o igual al elememnto dado, o nulo si no existe dicho elemento.
     def ceiling(self, num):
-        if self.max and self.max >= num:
-            return self.max
-        if self.max and self.max < num:
+        if not self.conjunto:
             return None
-        if self.min and self.min >= num:
+        if self.max < num:
+            return None
+        if self.min >= num:
             return self.min
-        
-        for element in self.conjunto.inverse():
-            past = element
-            if element == num:
+        for element in self.conjunto.inorder():
+            if element >= num:
                 return element
-            if element > num:
-                return past
-            past = element
-        return num
+        return None
     
     #Elmimina los elementos del conjunto
     def clear(self):

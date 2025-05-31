@@ -85,6 +85,27 @@ class _2_3_4_test(unittest.TestCase):
         #medio_lleno.plot()
     """FIN DE TEST DE INSERCIONES BÁSICAS"""
 
+
+    """TEST DE BÚSQUEDAS BÁSICAS"""
+    def test_busqueda(self):
+        buscador = TreeSet(int)
+        buscador.add(5)
+        buscador.add(3)
+        buscador.add(7)
+        self.assertEqual(buscador.contains(3), True, "Debería ser True")
+        self.assertEqual(buscador.contains(5), True, "Debería ser True")
+        self.assertEqual(buscador.contains(7), True, "Debería ser True")
+    
+    def test_busqueda_v2(self):
+        buscador = TreeSet(int)
+        for i in range(1, 40):
+            buscador.add(i)
+        for i in range(1, 40):
+            self.assertTrue(buscador.contains(i),  "Debería ser True")
+    """FIN DE TEST DE BÚSQUEDAS BÁSICAS"""
+
+
+    """TEST DE MÉTODOS BÁSICOS"""
     #COMPROBACIÓN DE CEILING
     def test_comparar(self):
         comprobador = TreeSet(1)
@@ -92,9 +113,22 @@ class _2_3_4_test(unittest.TestCase):
         comprobador.add(2)
         comprobador.add(3)
         self.assertEqual(comprobador.ceiling(1), 1, "Debería ser 1")
-        self.assertEqual(comprobador.ceiling(2), 2, "Debería ser 1")
+        self.assertEqual(comprobador.ceiling(2), 2, "Debería ser 2")
         self.assertEqual(comprobador.ceiling(3), 3, "Debería ser 3")
         self.assertEqual(comprobador.ceiling(4), None, "Debería ser None")
+        #comprobador.plot()
+    
+    def test_comparar_v2(self):
+        comprobador = TreeSet(1)
+        for i in range(1, 40):
+            comprobador.add(i)
+        
+        for i in range(1, 40):
+            self.assertEqual(comprobador.ceiling(i), i, "Debería ser: " + str(i))
+        
+        for i in range(40, 70):
+            self.assertIsNone(comprobador.ceiling(i), "Debería ser None")
+        #comprobador.plot()
     
     #COMPROBACIÓN DE CLEAR
     def test_borrado(self):
@@ -105,7 +139,8 @@ class _2_3_4_test(unittest.TestCase):
         self.assertEqual(comprobador.size(), 3, "Debería haber 3 elementos")
         comprobador.clear()
         self.assertEqual(comprobador.size(), 0, "Debería haber 0 elementos")
-    
+        #comprobador.plot()
+
     def test_borrado_v2(self):
         comprobador = TreeSet(1)
         for i in range(1, 40):
@@ -113,7 +148,8 @@ class _2_3_4_test(unittest.TestCase):
         self.assertEqual(comprobador.size(), 39, "Debería haber 39 elementos")
         comprobador.clear()
         self.assertEqual(comprobador.size(), 0, "Debería haber 0 elementos")
-    
+        #comprobador.plot()
+
     #COMPROBACIÓN DEL CLONE FALLA
     def test_clonar(self):
         original = TreeSet(1)
@@ -122,21 +158,18 @@ class _2_3_4_test(unittest.TestCase):
         original.add(3)
         clon = original.clone()
         self.assertEqual(original, clon, "Deberían ser idénticos")
-    
-    def test_clonar(self):
+        #original.plot()
+        #clon.plot()
+
+    def test_clonar_v2(self):
         original = TreeSet(1)
         for i in range(1, 40):
             original.add(i)
         clon = original.clone()
         self.assertEqual(original, clon, "Deberían ser idénticos")
-    
-    
-
-        
-
-
-
-
+        #original.plot()
+        #clon.plot()
+    """FIN DE TEST DE MÉTODOS BÁSICOS"""
 
     @classmethod
     def tearDownClass(cls):
@@ -144,97 +177,3 @@ class _2_3_4_test(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-    medio_lleno = TreeSet(int)
-    medio_lleno.add(5)
-    medio_lleno.plot()
-    
-    tree = Tree234()
-    tree.insert(2)
-    tree.insert(3)
-    tree.insert(1)
-    tree.insert(49)
-    tree.insert(219)
-    tree.insert(54)
-    tree.insert(32)
-    tree.insert(500)
-    tree.insert(512)
-    tree.insert(100)
-    #tree.show_plot()
-    tree.insert(33)
-    tree.insert(31)
-    tree.insert(90)
-    """for v in [10, 20, 5, 15, 25]:
-
-        tree.insert(v)
-
-    print("In-orden:")
-    for val in tree.inorder():
-        print(val, end=" ")
-
-    print("\nPre-orden:")
-    for val in tree.preorder():
-        print(val, end=" ")
-
-    print("\nPos-orden:")
-    for val in tree.postorder():
-        print(val, end=" ")
-        
-    
-    print("\ninverso:")
-    for val in tree.inverse():
-        print(val, end=" ")
-        
-    ts = TreeSet("hola")
-    clon = TreeSet(ts.tipo()) 
-    print(clon.tipo)           """
-    tree.insert(107)
-    tree.insert(100)
-    tree.insert(66)
-    tree.insert(99)
-    tree.insert(67)
-    #insertamos muchos mas nodos
-    tree.insert(82)
-    tree.insert(10)
-    tree.insert(11)
-    tree.insert(12)
-    tree.insert(215)
-    tree.insert(39)
-    tree.insert(333)
-    tree.insert(334)
-    tree.insert(335)
-    tree.insert(223)
-    tree.insert(13)
-    tree.insert(14)
-    tree.insert(15)
-    tree.insert(16)
-    tree.insert(17)
-    tree.insert(18)
-    tree.insert(19)
-    tree.delete(223)
-    tree.delete(219)
-    tree.insert(0)
-    tree.insert(6)
-    tree.insert(7)
-    tree.insert(9)
-    tree.insert(777)
-    #tree.show_plot()
-    tree.delete(215)
-    tree.delete(335)
-    tree.delete(777)
-    tree.delete(333)
-    tree.delete(512)
-    tree.delete(107)
-    tree.delete(12)
-    tree.delete(18)
-    tree.delete(19)
-    tree.delete(3)
-    tree.delete(1)
-    tree.delete(0)
-    tree.delete(82)
-    tree.delete(33)
-    tree.delete(39)
-    #tree.show_plot()
-    tree.delete(15)
-    tree.delete(500)
-    #tree.show_plot()
-    
