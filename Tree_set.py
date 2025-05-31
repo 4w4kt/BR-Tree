@@ -4,7 +4,10 @@ from tree_2_3_4 import Tree234
 class TreeSet:
     #Crea un nuevo treeset que está inicialmente vacío
     def __init__(self, elemet):
-        self.tipo = type(elemet)
+        if isinstance(elemet, type):
+            self.tipo = elemet
+        else:
+            self.tipo = type(elemet)
         self.conjunto = Tree234()
         self.min = None
         self.max = None

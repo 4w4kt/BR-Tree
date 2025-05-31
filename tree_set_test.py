@@ -19,19 +19,114 @@ class _2_3_4_test(unittest.TestCase):
     def setUp(self):
         self.tree = Tree234()
 
-    def test_add(self):
-        self.tree.insert(2)
-        self.tree.insert(3)
-        self.tree.insert(1)
-        self.tree.show_plot()
+    #CREAMOS UN ÁRBOL VACÍO
+    def test_create_empty(self):
+        vacio = TreeSet(5)    #TAMBIÉN VALDRÍA CON PASARLE UN NÚMERO
+        self.assertEqual(vacio.size(), 0)
+        self.assertEqual(vacio.min, None)
+        self.assertEqual(vacio.max, None)
+        #vacio.plot()
+    
+    """TEST DE INSERCIONES BÁSICAS"""
+    #ÁRBOL DE UN ELEMENTO
+    def test_insertion_ind(self):
+        medio_lleno = TreeSet(5)
+        medio_lleno.add(5)
+        self.assertEqual(medio_lleno.size(), 1)
+        self.assertEqual(medio_lleno.min, 5)
+        self.assertEqual(medio_lleno.max, 5)
+        #medio_lleno.plot()
+    
+    def test_insertion_var(self):
+        medio_lleno = TreeSet(5)
+        medio_lleno.addAll([5])
+        self.assertEqual(medio_lleno.size(), 1)
+        self.assertEqual(medio_lleno.min, 5)
+        self.assertEqual(medio_lleno.max, 5)
+        #medio_lleno.plot()
+    
+    #ÁRBOL DE 3 ELEMENTOS
+    def test_insertion_ind_v2(self):
+        medio_lleno = TreeSet(5)
+        medio_lleno.add(5)
+        medio_lleno.add(3)
+        medio_lleno.add(7)
+        self.assertEqual(medio_lleno.size(), 3)
+        self.assertEqual(medio_lleno.min, 3)
+        self.assertEqual(medio_lleno.max, 7)
+        #medio_lleno.plot()
+
+    def test_insertion_var_v2(self):
+        medio_lleno = TreeSet(5)
+        medio_lleno.addAll([5, 3, 7])
+        self.assertEqual(medio_lleno.size(), 3)
+        self.assertEqual(medio_lleno.min, 3)
+        self.assertEqual(medio_lleno.max, 7)
+        #medio_lleno.plot()
+    
+    #ÁRBOL DE MÁS DE 3 ELEMENTOS -> SOBRECARGA
+    def test_insertion_ind_v3(self):
+        medio_lleno = TreeSet(int)
+        medio_lleno.add(5)
+        medio_lleno.add(3)
+        medio_lleno.add(7)
+        medio_lleno.add(1)
+        self.assertEqual(medio_lleno.size(), 4)
+        self.assertEqual(medio_lleno.min, 1)
+        self.assertEqual(medio_lleno.max, 7)
+        #medio_lleno.plot()
+
+    def test_insertion_var_v3(self):
+        medio_lleno = TreeSet(5)
+        medio_lleno.addAll([5, 3, 7, 1])
+        self.assertEqual(medio_lleno.size(), 4)
+        self.assertEqual(medio_lleno.min, 1)
+        self.assertEqual(medio_lleno.max, 7)
+        #medio_lleno.plot()
+    """FIN DE TEST DE INSERCIONES BÁSICAS"""
+
+    #COMPROBACIÓN DE CEILING
+    def test_comparar(self):
+        comprobador = TreeSet(1)
+        comprobador.add(1)
+        comprobador.add(2)
+        comprobador.add(3)
+        self.assertEqual(comprobador.ceiling(1), 1, "Debería ser 1")
+        self.assertEqual(comprobador.ceiling(2), 2, "Debería ser 1")
+        self.assertEqual(comprobador.ceiling(3), 3, "Debería ser 3")
+        self.assertEqual(comprobador.ceiling(4), None, "Debería ser None")
+    
+    #COMPROBACIÓN DE CLEAR
+    def test_borrado(self):
+        comprobador = TreeSet(1)
+        comprobador.add(1)
+        comprobador.add(2)
+        comprobador.add(3)
+        self.assertEqual(comprobador.size(), 3, "Debería haber 3 elementos")
+        comprobador.clear()
+        self.assertEqual(comprobador.size(), 0, "Debería haber 0 elementos")
+    
+    def test_borrado_v2(self):
+        comprobador = TreeSet(1)
+        for i in range(1, 40):
+            comprobador.add(i)
+        self.assertEqual(comprobador.size(), 39, "Debería haber 39 elementos")
+        comprobador.clear()
+        self.assertEqual(comprobador.size(), 0, "Debería haber 0 elementos")
+
+
+
 
     @classmethod
     def tearDownClass(cls):
         print("Han finalizado las pruebas de la clase tree_set")
 
 if __name__ == '__main__':
-    # unittest.main()
-
+    unittest.main()
+    medio_lleno = TreeSet(int)
+    medio_lleno.add(5)
+    medio_lleno.plot()
+    
     tree = Tree234()
     tree.insert(2)
     tree.insert(3)
@@ -43,7 +138,7 @@ if __name__ == '__main__':
     tree.insert(500)
     tree.insert(512)
     tree.insert(100)
-    tree.show_plot()
+    #tree.show_plot()
     tree.insert(33)
     tree.insert(31)
     tree.insert(90)
@@ -101,7 +196,7 @@ if __name__ == '__main__':
     tree.insert(7)
     tree.insert(9)
     tree.insert(777)
-    tree.show_plot()
+    #tree.show_plot()
     tree.delete(215)
     tree.delete(335)
     tree.delete(777)
@@ -117,8 +212,8 @@ if __name__ == '__main__':
     tree.delete(82)
     tree.delete(33)
     tree.delete(39)
-    tree.show_plot()
+    #tree.show_plot()
     tree.delete(15)
     tree.delete(500)
-    tree.show_plot()
+    #tree.show_plot()
     
