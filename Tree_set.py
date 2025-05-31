@@ -50,7 +50,7 @@ class TreeSet:
     
     #Elmimina los elementos del conjunto
     def clear(self):
-        self.conjunto = Tree234(self.tipo())
+        self.conjunto = Tree234()
         self.max = None
         self.min = None
         return True
