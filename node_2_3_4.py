@@ -28,7 +28,6 @@ class Node:
             return self.split()
         return 0
       
-    # fallo en la referencia del padre de 107 que en lugar de ser 500 es 54
     def split(self):
         middle = 2
         left = self.values[:middle]
@@ -46,7 +45,7 @@ class Node:
         
     def insert_brother(self, node, left, right):
         for i in range(len(self.values)):
-            print(node.values)
+            
             if node.values[2] < self.values[i]:
                 self.values.insert(i, node.values[2])
                 self.children[i] = Node (left, self,  node.children[0:3])

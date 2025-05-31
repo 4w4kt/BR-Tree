@@ -45,6 +45,29 @@ if __name__ == '__main__':
     tree.insert(33)
     tree.insert(31)
     tree.insert(90)
+    for v in [10, 20, 5, 15, 25]:
+
+        tree.insert(v)
+
+    print("In-orden:")
+    for val in tree.inorder():
+        print(val, end=" ")
+
+    print("\nPre-orden:")
+    for val in tree.preorder():
+        print(val, end=" ")
+
+    print("\nPos-orden:")
+    for val in tree.postorder():
+        print(val, end=" ")
+        
+    
+    print("\ninverso:")
+    for val in tree.inverse():
+        print(val, end=" ")
+        
+    tree.show_plot()
+    """
     tree.insert(107)
     tree.insert(100)
     tree.insert(66)
@@ -70,6 +93,10 @@ if __name__ == '__main__':
     tree.insert(19)
     tree.delete(223)
     tree.delete(219)
+    tree.insert(0)
+    tree.insert(6)
+    tree.insert(7)
+    tree.insert(9)
     tree.insert(777)
     tree.delete(215)
     tree.delete(335)
@@ -84,6 +111,11 @@ if __name__ == '__main__':
     tree.delete(1)
     tree.delete(0)
     tree.delete(82)
+    tree.delete(33)
+    tree.delete(39)
     tree.show_plot()
-    tree.delete(67)
+    tree.delete(15)
+#    tree.delete(16)
     tree.show_plot()
+    
+    """

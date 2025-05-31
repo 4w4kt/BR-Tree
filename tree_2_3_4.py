@@ -134,3 +134,52 @@ class Tree234:
             
         plt.tight_layout()
         plt.show()
+        
+        
+
+    def inorder(self):
+        def _inorder(node):
+            if node.is_leaf():
+                for val in node.values:
+                    yield val
+            else:
+                for i in range(len(node.values)):
+                    yield from _inorder(node.children[i])
+                    yield node.values[i]
+                yield from _inorder(node.children[-1])
+        if self.root:
+            yield from _inorder(self.root)
+            
+    def preorder(self):
+            def _preorder(node):
+                for val in node.values:
+                    yield val
+                for child in node.children:
+                    yield from _preorder(child)
+            if self.root:
+                yield from _preorder(self.root)
+                
+        
+        
+    def postorder(self):
+        def _postorder(node):
+            for child in node.children:
+                yield from _postorder(child)
+            for val in node.values:
+                yield val
+        if self.root:
+            yield from _postorder(self.root)
+            
+    
+    def inverse(self):
+        def _inverse(node):
+            if node.is_leaf():
+                for val in reversed(node.values):
+                    yield val
+            else:
+                yield from _inverse(node.children[-1])
+                for i in reversed(range(len(node.values))):
+                    yield node.values[i]
+                    yield from _inverse(node.children[i])
+        if self.root:
+            yield from _inverse(self.root)
