@@ -4,7 +4,10 @@ from tree_2_3_4 import Tree234
 class TreeSet:
     #Crea un nuevo treeset que está inicialmente vacío
     def __init__(self, elemet):
-        self.tipo = type(elemet)
+        if isinstance(elemet, type):
+            self.tipo = elemet
+        else:
+            self.tipo = type(elemet)
         self.conjunto = Tree234()
         self.min = None
         self.max = None
@@ -29,25 +32,20 @@ class TreeSet:
 
     #Devuelve el elemento más pequeño de este conjunto que sea mayor o igual al elememnto dado, o nulo si no existe dicho elemento.
     def ceiling(self, num):
-        if self.max and self.max >= num:
-            return self.max
-        if self.max and self.max < num:
+        if not self.conjunto:
             return None
-        if self.min and self.min >= num:
+        if self.max < num:
+            return None
+        if self.min >= num:
             return self.min
-        
-        for element in self.conjunto.inverse():
-            past = element
-            if element == num:
+        for element in self.conjunto.inorder():
+            if element >= num:
                 return element
-            if element > num:
-                return past
-            past = element
-        return num
+        return None
     
     #Elmimina los elementos del conjunto
     def clear(self):
-        self.conjunto = Tree234(self.tipo())
+        self.conjunto = Tree234()
         self.max = None
         self.min = None
         return True
@@ -55,7 +53,7 @@ class TreeSet:
     #Retorna una shallow copy del TreeSet
     def clone(self):
         clon = TreeSet(self.tipo())
-        for element in self.conjunto:
+        for element in self.conjunto.inorder():
             clon.add(element)
         return clon
 
@@ -200,3 +198,8 @@ class TreeSet:
         print("In-orden inverso:")
         for val in self.conjunto.inverse():
             print(val, end=" ")
+        
+    def __eq__(self, other):
+        if other == None:
+            return False
+        return self.conjunto == other.conjunto 

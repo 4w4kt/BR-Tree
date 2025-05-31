@@ -206,3 +206,14 @@ class Tree234:
                     yield from _inverse(node.children[i])
         if self.root:
             yield from _inverse(self.root)
+        
+    def __eq__(self, other):
+        if other == None:
+            return False
+        origen_l = []
+        segundo_l = []
+        for element in self.inorder():
+            origen_l.append(element)
+        for element in other.inorder():
+            segundo_l.append(element)
+        return origen_l == segundo_l 
