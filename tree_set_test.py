@@ -1,5 +1,6 @@
 import unittest
 from tree_2_3_4 import *
+from Tree_set import *
 
 
 class _2_3_4_test(unittest.TestCase):
@@ -42,10 +43,11 @@ if __name__ == '__main__':
     tree.insert(500)
     tree.insert(512)
     tree.insert(100)
+    tree.show_plot()
     tree.insert(33)
     tree.insert(31)
     tree.insert(90)
-    for v in [10, 20, 5, 15, 25]:
+    """for v in [10, 20, 5, 15, 25]:
 
         tree.insert(v)
 
@@ -66,8 +68,9 @@ if __name__ == '__main__':
     for val in tree.inverse():
         print(val, end=" ")
         
-    tree.show_plot()
-    """
+    ts = TreeSet("hola")
+    clon = TreeSet(ts.tipo()) 
+    print(clon.tipo)           """
     tree.insert(107)
     tree.insert(100)
     tree.insert(66)
@@ -98,6 +101,7 @@ if __name__ == '__main__':
     tree.insert(7)
     tree.insert(9)
     tree.insert(777)
+    tree.show_plot()
     tree.delete(215)
     tree.delete(335)
     tree.delete(777)
@@ -115,7 +119,6 @@ if __name__ == '__main__':
     tree.delete(39)
     tree.show_plot()
     tree.delete(15)
-#    tree.delete(16)
+    tree.delete(500)
     tree.show_plot()
     
-    """

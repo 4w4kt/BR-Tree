@@ -34,7 +34,7 @@ class Tree234:
     def delete(self, value):
         if self.root is None:
             return
-        self.delete_node(value)
+        return self.delete_node(value)
 
         
     def delete_node(self, value):
@@ -63,7 +63,7 @@ class Tree234:
         return False
         
         
-    def conteins(self, value):
+    def contains(self, value):
         if self.root is None:
             return False
         current = self.root
