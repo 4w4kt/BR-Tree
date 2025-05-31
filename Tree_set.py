@@ -135,7 +135,17 @@ class TreeSet:
     
     #Recupera y elimina el primer elemento (el más bajo) o devuelve nulo si el conjunto está vacío.
     def pollFirst(self):
-        return -1
+        if self.conjunto.size == 0:
+            return None
+        if self.min:
+            self.conjunto.delete(self.min)
+            min = self.min
+            self.min = None
+            return min
+        
+        max = next(self.conjunto.preorder())
+        self.conjunto.delete(max)
+        return max
 
     #Recupera y elimina el último elemento (el más alto), o devuelve nulo si este conjunto está vacío.
     def pollLast(self):
