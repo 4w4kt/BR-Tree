@@ -176,7 +176,7 @@ class _2_3_4_test(unittest.TestCase):
         self.assertEqual(comprobador.size(), 0, "Debería haber 0 elementos")
         #comprobador.plot()
 
-    #COMPROBACIÓN DEL CLONE FALLA
+    #COMPROBACIÓN DEL CLONE 
     def test_clonar(self):
         original = TreeSet(1)
         original.add(1)
@@ -203,95 +203,3 @@ class _2_3_4_test(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
-
-    tree = Tree234()
-    tree.insert(2)
-    tree.insert(3)
-    tree.insert(1)
-    tree.insert(49)
-    tree.insert(219)
-    tree.insert(54)
-    tree.insert(32)
-    tree.insert(500)
-    tree.insert(512)
-    tree.insert(100)
-    tree.insert(33)
-    tree.insert(31)
-    tree.insert(90)
-    """for v in [10, 20, 5, 15, 25]:
-
-        tree.insert(v)
-
-    print("In-orden:")
-    for val in tree.inorder():
-        print(val, end=" ")
-
-    print("\nPre-orden:")
-    for val in tree.preorder():
-        print(val, end=" ")
-
-    print("\nPos-orden:")
-    for val in tree.postorder():
-        print(val, end=" ")
-        
-    
-    print("\ninverso:")
-    for val in tree.inverse():
-        print(val, end=" ")
-        
-    ts = TreeSet("hola")
-    clon = TreeSet(ts.tipo()) 
-    print(clon.tipo)           """
-    tree.insert(107)
-    tree.insert(100)
-    tree.insert(66)
-    tree.insert(99)
-    tree.insert(67)
-    #insertamos muchos mas nodos
-    tree.insert(82)
-    tree.insert(10)
-    tree.insert(11)
-    tree.insert(12)
-    tree.insert(215)
-    tree.insert(39)
-    tree.insert(333)
-    tree.insert(334)
-    tree.insert(335)
-    tree.insert(223)
-    tree.insert(13)
-    tree.insert(14)
-    tree.insert(15)
-    tree.insert(16)
-    tree.insert(17)
-    tree.insert(18)
-    tree.insert(19)
-    tree.delete(223)
-    tree.delete(219)
-    tree.insert(0)
-    tree.insert(6)
-    tree.insert(7)
-    tree.insert(9)
-    tree.insert(777)
-    tree.delete(215)
-    tree.delete(335)
-    tree.delete(777)
-    tree.delete(333)
-    tree.delete(512)
-    tree.delete(107)
-    tree.delete(12)
-    tree.delete(18)
-    tree.delete(19)
-    tree.delete(3)
-    tree.delete(1)
-    tree.delete(0)
-    tree.delete(82)
-    tree.delete(33)
-    tree.delete(39)
-    tree.delete(15)
-    tree.delete(6)
-    tree.show_plot()
-    tree.delete(2)
-    tree.show_plot()
-
-        
-    
