@@ -38,6 +38,8 @@ class Tree234:
                 self.root = self.root.children[0]
                 self.root.parent = None
             self.size -= 1
+            if self.size == 0:
+                self.root = None
             return True
         return False
 

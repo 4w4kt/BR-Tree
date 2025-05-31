@@ -6,7 +6,6 @@ class TreeSet:
     def __init__(self, elemet):
         self.tipo = type(elemet)
         self.conjunto = Tree234()
-        self.size = 0
         self.min = None
         self.max = None
 
@@ -49,7 +48,6 @@ class TreeSet:
     #Elmimina los elementos del conjunto
     def clear(self):
         self.conjunto = Tree234(self.tipo())
-        self.size = 0
         self.max = None
         self.min = None
         return True
@@ -75,7 +73,7 @@ class TreeSet:
     
     #Devuelve el primer elemento (más bajo) actualmente en este conjunto.
     def first(self):
-        if self.size == 0:
+        if self.conjunto.size == 0:
             return None
         if self.min:
             return self.min
@@ -86,7 +84,7 @@ class TreeSet:
     
     #Devuelve el elemento mas grande de este conjunto menor o igual al elemento dado, o nulo si no existe dicho elemento
     def floor(self, num):
-        if self.size == 0:
+        if self.conjunto.size == 0:
             return None
         if self.min and self.min <= num:
             return self.min
@@ -121,7 +119,7 @@ class TreeSet:
 
     #Retorna el ultimo elemento (el más alto) del conjunto
     def last(self):
-        if self.size == 0:
+        if self.conjunto.size == 0:
             return None
         if self.max:
             return self.max
@@ -141,7 +139,7 @@ class TreeSet:
 
     #Recupera y elimina el último elemento (el más alto), o devuelve nulo si este conjunto está vacío.
     def pollLast(self):
-        if self.size == 0:
+        if self.conjunto.size == 0:
             return None
         if self.max:
             self.conjunto.delete(self.max)
@@ -155,14 +153,17 @@ class TreeSet:
 
     #Elimina el elemento especificado de este conjunto si está presente.
     def remove(self, num):
+        if num == self.min:
+            self.min = None
+        if num == self.max:
+            self.max = None
         if self.conjunto.delete(num):
-            self.size -= 1
             return True
         return False
     
     #Devuelve el número de elementos de este conjunto (su cardinalidad).
     def size(self):
-        return self.size
+        return self.conjunto.size
     
     def plot(self):
         self.conjunto.show_plot()
